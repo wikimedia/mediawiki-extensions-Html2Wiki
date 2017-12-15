@@ -4,7 +4,8 @@
 			"Greg Rundlett",
 			"Orlodrim",
 			"Wladek92",
-			"Gomoko"
+			"Gomoko",
+			"Urhixidur"
 		]
 	},
 	"html2wiki": "Importer du contenu HTML",
@@ -27,5 +28,5 @@
 	"html2wiki_multiple_body": "Plus d’une balise <body> trouvée dans\n$1",
 	"html2wiki_uploaderror": "Une erreur s’est produite lors de l’importation du fichier :\n$1",
 	"html2wiki_parse-error": "QueryPath (http://querypath.org/) n’a pas pu analyser le contenu fourni dans $1",
-	"logentry-html2wiki": "$1 {{GENDER:$2|a importé}} la page $3"
+	"logentry-html2wiki": "$1 a importé la page $3"
 }
