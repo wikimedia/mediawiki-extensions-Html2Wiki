@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"html2wiki": "Importar conteúdo HTML",
+	"html2wiki-collection-name": "Nome do conjunto, ou nome da hierarquia:",
+	"html2wiki-desc": "Importa conteúdo HTML para a sua wiki",
+	"html2wiki-dry-run": "Simular:",
+	"html2wiki-dry-run-heading": "Mera antevisão! O conteúdo não foi gravado:",
+	"html2wiki-summary": "Importar páginas HTML para a wiki",
+	"html2wiki-importbtn": "Importar"
+}
