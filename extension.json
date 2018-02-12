@@ -57,8 +57,7 @@
 				"html2wiki-title",
 				"html2wiki_uploaderror"
 			],
-			"dependencies": [],
-			"position": "bottom"
+			"dependencies": []
 		}
 	},
 	"ResourceFileModulePaths": {
