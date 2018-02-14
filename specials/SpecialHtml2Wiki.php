@@ -811,7 +811,7 @@ HERE;
     }
 
     function formatValue( $value ) {
-        return htmlspecialchars( $this->getLanguage()->formatSize( $value ) );
+        return htmlspecialchars( $this->getLanguage()->formatSize( Language::formatSize( $value ) ) );
     }
 
     /**
