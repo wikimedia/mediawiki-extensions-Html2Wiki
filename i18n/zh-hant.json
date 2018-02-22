@@ -1,8 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Kly"
 		]
 	},
-	"html2wiki-filename": "檔案名稱："
+	"html2wiki": "匯入 HTML 內容",
+	"html2wiki-collection-name": "收藏名稱或上層路徑：",
+	"html2wiki-comment": "由 [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki] 所導入的檔案",
+	"html2wiki-desc": "匯入 HTML 內容至您的 wiki",
+	"html2wiki-dry-run": "試運行：",
+	"html2wiki-dry-run-heading": "僅為預覽！內容尚未儲存：",
+	"html2wiki-summary": "匯入 HTML 內容至 wiki",
+	"html2wiki-importbtn": "匯入",
+	"html2wiki-intro": "使用此表單來匯入 HTML 內容至您的 wiki。\n\n若您上傳 zip 檔，收藏名稱欄位內容不可同於先前的版本，且所有的檔案會被歸在同一分類名稱下。例如：假設您正要匯入從您軟體文件系統所產出的 HTML 檔案收藏，您需要輸入像是「FluxCapacitor-v1.1」這樣的唯一收藏識別碼，之後整個收藏會被匯入到以「FluxCapacitor-v1.1」作為開頭的條目層級。這種方式可導入 10 個不同的收藏且不會互相影響到。\n\n若指定一個現有的收藏名稱（或上層路徑），將會更新現有的 wiki 內容。\n\n若您想匯入單一檔案至現有的條目層級，只需指定它的「上層」來做為收藏名稱即可。\n\n例如：若要匯入一個名為「advanced_topics.html」的新 html，那它應要存在於 <code>「FluxCapacitor-v1.1/docs/advanced_topics.html」</code>，且上層路徑得是「FluxCapacitor-v1.1/docs/」",
+	"html2wiki-title": "匯入 HTML",
+	"html2wiki-fieldset-legend": "匯入 HTML 內容",
+	"html2wiki_filenotfound": "檔案（$1）未找到",
+	"html2wiki-text": "可支援單一 HTML（.html）檔或打包檔案。打包格式可以是 .gz、.tar、.tar.gz, .tgz、或是 .zip。圖片部份可從打包檔案裡自動處理。",
+	"html2wiki-filename": "檔案名稱：",
+	"html2wiki-not-allowed": "很抱歉，您必須得是管理員或要具備使用此表單的權限。",
+	"html2wiki-log-name": "HTML 匯入日誌",
+	"html2wiki-log-description": "以下為最近所匯入的 HTML 清單。",
+	"html2wiki_multiple_body": "找到一個以上 <body> 標籤組於\n$1",
+	"html2wiki_uploaderror": "處理檔案上傳時出錯：\n$1",
+	"html2wiki_parse-error": "QueryPath（http://querypath.org/）無法解析在 $1 提供的內容",
+	"logentry-html2wiki": "$1 {{GENDER:$2|已匯入}}頁面 $3"
 }
