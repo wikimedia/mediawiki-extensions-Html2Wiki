@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"html2wiki": "Εισαγωγή περιεχομένου HTML",
+	"html2wiki-comment": "Το αρχείο εισήχθη από το [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "Εισαγωγή περιεχομένου HTML στο βίκι σας",
+	"html2wiki-dry-run-heading": "Προεπισκόπηση μόνο! Τα περιεχόμενα δεν αποθηκεύθηκαν:",
+	"html2wiki-summary": "Εισαγωγή σελίδων HTML στο βίκι",
+	"html2wiki-importbtn": "Εισαγωγή",
+	"html2wiki-title": "Εισαγωγή HTML",
+	"html2wiki-fieldset-legend": "Εισαγωγή περιεχομένου HTML",
+	"html2wiki_filenotfound": "Το αρχείο ($1) δεν βρέθηκε",
+	"html2wiki-filename": "Όνομα αρχείου:",
+	"html2wiki-not-allowed": "Λυπούμαστε, πρέπει να είστε διαχειριστής ή να έχετε προνόμια εισαγωγής για να χρησιμοποιήσετε αυτή τη λειτουργία.",
+	"html2wiki-log-name": "Μητρώο εισαγωγής HTML",
+	"html2wiki-log-description": "Παρακάτω είναι μια λίστα των πιο πρόσφατων εισαγωγών HTML",
+	"logentry-html2wiki": "$1 {{GENDER:$2|εισηγμένη}} σελίδα $3"
+}
