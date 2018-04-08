@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chrumps"
+			"Chrumps",
+			"Railfail536"
 		]
 	},
+	"html2wiki": "Import treści HTML",
 	"html2wiki-dry-run": "Przebieg próbny:",
 	"html2wiki-importbtn": "Importuj",
 	"html2wiki-title": "Import HTML",
