@@ -313,15 +313,6 @@ class SpecialHtml2Wiki extends SpecialPage {
      * Get data POSTed through the form and assign them to the object
      * @param WebRequest $request Data posted.
      * We'll use the parent's constructor to instantiate the name but not perms
-     *
-     * @todo We need to check for $wgEnableWriteAPI=true (default) because if it's not
-     * then our extension will not be able to do it's work.  There are two possible
-     * errors:
-     * noapiwrite: Editing of this wiki through the API is disabled. Make sure the $wgEnableWriteAPI=true; statement is included in the wiki's LocalSettings.php file
-     * writeapidenied: You're not allowed to edit this wiki through the API
-     *
-     * The first is clear enough to the user what they have to do to fix it.
-     * The second is that they are not configured properly in the correct group
      */
     public function __construct( $request = null ) {
         $name = 'Html2Wiki';
@@ -1055,7 +1046,6 @@ HERE
     static function saveCat( $title, $category ) {
         global $wgContLang, $wgUser;
         $text = "\n[[Category:" . $category . "]]";
-        $wgEnableWriteAPI = true;
         $params = new FauxRequest( array(
             'action' => 'edit',
             'nocreate' => 'true', // throw an error if the page doesn't exist
@@ -1064,8 +1054,7 @@ HERE
             'appendtext' => $text,
             'token' => $wgUser->getEditToken(), // $token."%2B%5C",
                 ), true, $_SESSION );
-        $enableWrite = true; // This is set to false by default, in the ApiMain constructor
-        $api = new ApiMain( $params, $enableWrite );
+        $api = new ApiMain( $params, true );
         $api->execute();
     }
 
