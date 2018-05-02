@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"html2wiki": "استيراد محتوى HTML",
+	"html2wiki-collection-name": "اسم المجموعة أو المسار الأصلي:",
+	"html2wiki-comment": "تم استيراد ملف بواسطة [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "استيراد محتوى HTML للويكي الخاص بك",
+	"html2wiki-dry-run": "تشغيل جاف:",
+	"html2wiki-dry-run-heading": "معاينة فقط! لم يتم حفظ المحتويات:",
+	"html2wiki-summary": "استيراد صفحات HTML للويكي",
+	"html2wiki-importbtn": "استيراد",
+	"html2wiki-intro": "استخدم هذا النموذج لاستيراد محتوى HTML للويكي الخاص بك. \n\nإذا قمت برفع ملف مضغوط، فسيتم استخدام حقل اسم المجموعة للتمييز بين المجموعة من إصدار أحدث، كما سيتم تجميع جميع الملفات في تصنيف بنفس الاسم، على سبيل المثال، لنفترض أنك تستورد مجموعة من مخرجات ملفات HTML من نظام توثيق البرامج، ستقوم بإدخال معرف مجموعة فريد مثل \"FluxCapacitor-v1.1\" بحيث يتم استيراد المجموعة بأكملها إلى تسلسل هرمي للمقالة يبدأ بـ 'FluxCapacitor-v1.1'، بهذه الطريقة، يمكن استيراد 10 مجموعات مختلفة دون استبدال بعضها البعض. \n\nسيؤدي تحديد اسم مجموعة موجود (أو مسار الأصل) إلى تحديث محتوى الويكي الحالي،\n\nإذا كنت ترغب في استيراد ملف واحد إلى تسلسل هرمي لمقالة موجودة، فما عليك سوى تحديد \"أصل\" كاسم مجموعة،\n\nعلى سبيل المثال، في حالة استيراد \"advanced_topics.html\" جديد يجب أن يكون موجودا في <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code>، فإن الأصل سيكون 'FluxCapacitor-v1.1/docs/'",
+	"html2wiki-title": "استيراد HTML",
+	"html2wiki-fieldset-legend": "استيراد محتوى HTML",
+	"html2wiki_filenotfound": "الملف ($1) غير موجود",
+	"html2wiki-text": "يتم دعم HTML الفردي (.html) وكذلك ملفات الأرشيف، قد تكون الأرشيفات .gz أو .tar أو .tar.gz أو .tgz أو .zip، سيتم التعامل مع الصور تلقائيا من ملفات الأرشيف.",
+	"html2wiki-filename": "اسم الملف:",
+	"html2wiki-not-allowed": "عذرًا ، يجب أن تكون إداريا، أو لديك امتيازات استيراد لاستخدام هذا النموذج.",
+	"html2wiki-log-name": "سجل استيراد HTML",
+	"html2wiki-log-description": "بالأسفل قائمة بأحدث واردات HTML.",
+	"html2wiki_multiple_body": "تم العثور على أكثر من مجموعة واحدة من وسوم <body> في\n$1",
+	"html2wiki_uploaderror": "حدث خطأ أثناء معالجة رفع الملف:\n$1",
+	"html2wiki_parse-error": "لم يتمكن QueryPath (http://querypath.org/) من تحليل المحتوى الذي تم توفيره في $1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|استورد|استوردت}} صفحة $3"
+}
