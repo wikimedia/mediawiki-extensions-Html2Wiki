@@ -1,0 +1,6 @@
+{
+	"ignore": [
+		"lib/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/README",
+		"lib/htmlpurifier/tests/HTMLPurifier/Injector/RemoveSpansWithoutAttributesTest.php"
+	]
+}
