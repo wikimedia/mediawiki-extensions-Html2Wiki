@@ -199,7 +199,7 @@ class SpecialHtml2Wiki extends SpecialPage {
         // Even without the isAllowsedAny check, the anonymous user sees
         // 'No transwiki import sources have been defined and direct history uploads are disabled.'
         # @todo Allow Title::getUserPermissionsErrors() to take an array
-        # @todo FIXME: Title::checkSpecialsAndNSPermissions() has a very wierd expectation of what
+        # @todo FIXME: Title::checkSpecialsAndNSPermissions() has a very weird expectation of what
         # getUserPermissionsErrors() might actually be used for, hence the 'ns-specialprotected'
         $errors = wfMergeErrorArrays(
                 $this->getPageTitle()->getUserPermissionsErrors(

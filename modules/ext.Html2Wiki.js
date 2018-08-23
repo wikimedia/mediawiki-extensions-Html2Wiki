@@ -47,7 +47,6 @@ function getToken () {
 	}
 }
 
-
 var api = new mw.Api();
 /*
 var summary = "This is a summary";
@@ -71,7 +70,7 @@ function addNewArticle( summary, content ) {
 			mw.log( "Got an empty response from the server" );
 		} else {
 			mw.log( "API error: " + code );
-		}		
+		}
 	} );
 }
 */
@@ -97,10 +96,8 @@ function addNewSection( summary, content ) {
 	} );
 }
 
-
-
-/** 
- * 
+/**
+ *
  * practical example to get working
  */
 
@@ -113,10 +110,10 @@ jQuery(document).ready(function ($) {
     $('li > ul').each(function (i) {
         // Find this list's parent list item.
         var parent_li = $(this).parent('li');
- 
+
         // Style the list item as folder.
         parent_li.addClass('folder');
- 
+
         // Temporarily remove the list from the
         // parent list item, wrap the remaining
         // text in an anchor, then reattach it.
@@ -127,20 +124,20 @@ jQuery(document).ready(function ($) {
         });
         parent_li.append(sub_ul);
     });
- 
+
     // Hide all lists except the outermost.
     $('ul ul').hide();
-	
+
 	// #h2wWand isn't available on the form screen, only on the result.
 	// @todo wrap this in a function that is only called on that view
 	var h2wButton = $( "#h2wWand" );
 	var h2wContent = $( "#h2wContent" ).html();
-	console.log( h2wContent );	
+	console.log( h2wContent );
 	h2wButton.click(function() {
 		h2wContent = h2wContent.replace(/<(style|script|object|applet|embed)\b[^>]*>.*?<\/\1>/g, '');
 	});
-	
-	// click the label, and show all the elments of the source
+
+	// click the label, and show all the elements of the source
 	$( "#h2wLabel" ).click(function() {
 	   // alert('hello world');
 
