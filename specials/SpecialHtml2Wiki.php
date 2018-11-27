@@ -1701,7 +1701,7 @@ HERE
             return false;
         }
         if ( $qp->length == 0 ) {
-            return false;
+            return $content;
         }
         foreach ( $qp as $anchor ) {
             if ( $anchor->hasAttr( 'href' ) ) {
