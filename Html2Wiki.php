@@ -8,7 +8,7 @@
  * @file
  * @ingroup Extensions
  * @author Greg Rundlett @link http://eQuality-Tech.com eQuality Technology
- * @license GNU General Public Licence 2.0 or later
+ * @license GPL-2.0-or-later
  *
  * This file is part of the Html2Wiki Extension to MediaWiki
  * @link https://www.mediawiki.org/wiki/Extension:Html2Wiki
@@ -33,7 +33,6 @@
  * @file
  */
 
-
 if ( function_exists( 'wfLoadExtension' ) ) {
 	wfLoadExtension( 'Html2Wiki' );
 	// Keep i18n globals so mergeMessageFileList.php doesn't break
@@ -46,6 +45,5 @@ if ( function_exists( 'wfLoadExtension' ) ) {
 	);
 	return;
 } else {
-    // don't die.  Maintain some backward compatibility
-    // die( 'This version of the Html2Wiki extension requires MediaWiki 1.25+' );
+	die( 'This version of the Html2Wiki extension requires MediaWiki 1.32+' );
 }
