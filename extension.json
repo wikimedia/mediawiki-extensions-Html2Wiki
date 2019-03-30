@@ -7,6 +7,9 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:Html2Wiki",
 	"descriptionmsg": "html2wiki-desc",
 	"license-name": "GPL-2.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.25.0"
+	},
 	"type": "other",
 	"SpecialPages": {
 		"Html2Wiki": "SpecialHtml2Wiki"
@@ -70,8 +73,5 @@
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 1,
-	"callback": "SpecialHtml2Wiki::checkEnvironment",
-	"requires": {
-		"MediaWiki": ">= 1.19.0"
-	}
+	"callback": "SpecialHtml2Wiki::checkEnvironment"
 }
