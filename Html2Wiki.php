@@ -2,7 +2,7 @@
 /**
  * Html2Wiki extension - enables you to import HTML content into your wiki.
  *
- * @link http://mediawiki.org/wiki/Extension:Html2Wiki For more info
+ * @link https://mediawiki.org/wiki/Extension:Html2Wiki For more info
  * (when available)
  *
  * @file
