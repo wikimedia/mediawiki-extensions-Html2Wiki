@@ -8,5 +8,21 @@
 	"html2wiki-collection-name": "Nome d'a collezzione; o percorse attane:",
 	"html2wiki-comment": "File 'mbortate da [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "'Mborte 'u condenute HTML jndr'à uicchi toje",
-	"html2wiki-dry-run": "Simulazione:"
+	"html2wiki-dry-run": "Simulazione:",
+	"html2wiki-dry-run-heading": "Sulamende l'andeprime! Le condenute non ge sò reggìstrate:",
+	"html2wiki-summary": "'Mborte pàggene HTML jndr'à uicchi",
+	"html2wiki-importbtn": "'Mborte",
+	"html2wiki-intro": "Ause stu module pe 'mbortà 'u condenute HTML jndr'à uicchi toje.\n\nCe tu ste careche 'nu file zip, 'u campe Nome d'a Collezzione jè ausate pe distinguere 'a collezzione da 'na versiona cchiù vecchie. Pure tutte le file avènene raggruppate jndr'à 'na categorije pu stesse nome. Pe esembie, dinne ce ste 'mborte 'na collezzione de file resultate HTML da 'u sisteme de documendazione d'u softuer tune, tu avissa mettere 'n'ID d'a Collezzione uneche cumme 'FluxCapacitor-v1.1' accussì ca totte 'a collezzione jè 'mbortate jndr'à 'na vôsce ca tène 'na gerarchie ca accumenze cu 'FluxCapacitor-v1.1'. Cu stu mode se ponne 'mbortà 'nzigne a 10 collezziune diverse senze ca nisciune vinge sus a l'otre.\n\nSpecificanne 'nu Nome d'a Collezzione esistende (o percorse attane) s'aggiornane tutte le condenute d'a uicchi esistende.\n\nCe tu ste 'mborte 'nu file single jndr'à 'na vôsce esistende gerarchicamende, avaste ca specifeche semblicemende l'attane sue cumme Nome d'a Collezzione.\n\nPe esembie, ce ste 'mborte 'nu 'advanced_topics.html' nuève ca avessa esistere jndr'à <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code>, l'attane avessa essere 'FluxCapacitor-v1.1/docs/'",
+	"html2wiki-title": "'Mborte HTML",
+	"html2wiki-fieldset-legend": "'Mborte 'u condenute HTML",
+	"html2wiki_filenotfound": "File ($1) non acchiate",
+	"html2wiki-text": "Sò supportate file HTML indivisuale (.html) e file de archivije. Le archivije ponne essere .gz, .tar, .tar.gz, .tgz o .zip. Le immaggine avènene gestite automatecamende da le file de archivije.",
+	"html2wiki-filename": "Nome d'u file:",
+	"html2wiki-not-allowed": "Ne despiace, a essere amministratore, o tenè le privilegge de 'mbortazione pe ausà stu module.",
+	"html2wiki-log-name": "Archivije de le 'mbortaziune HTML",
+	"html2wiki-log-description": "Sotte ste 'n'elenghe de le cchiù recende 'mbortaziune HTML",
+	"html2wiki_multiple_body": "Acchiate cchiù de 'na coppie de tag <body> jndr'à\n$1",
+	"html2wiki_uploaderror": "Ha assute 'n'errore jndr'à ggestione d'u carecamende d'u file:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) non g'è in grade de analizzà 'u condenute date a $1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|ave 'mbortate}} 'a pàgene $3"
 }
