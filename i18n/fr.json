@@ -26,7 +26,7 @@
 	"html2wiki-log-name": "Journal d’import HTML",
 	"html2wiki-log-description": "Voici une liste des dernières opérations d’importation HTML",
 	"html2wiki_multiple_body": "Plus d’une balise <body> trouvée dans\n$1",
-	"html2wiki_uploaderror": "Une erreur s’est produite lors de l’importation du fichier :\n$1",
+	"html2wiki_uploaderror": "Une erreur s’est produite lors du téléversement du fichier :\n$1",
 	"html2wiki_parse-error": "QueryPath (http://querypath.org/) n’a pas pu analyser le contenu fourni dans $1",
 	"logentry-html2wiki": "$1 {{GENDER:$2|}}a importé la page $3"
 }
