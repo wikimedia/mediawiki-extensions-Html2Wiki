@@ -12,6 +12,6 @@
 	"html2wiki-title": "HTML 가져오기",
 	"html2wiki_filenotfound": "$1 파일을 찾을 수 없습니다",
 	"html2wiki-filename": "파일 이름:",
-	"html2wiki_uploaderror": "$1 파일을 업로드하던 중 오류가 발생했습니다",
+	"html2wiki_uploaderror": "파일 업로드를 처리하는 중에 오류가 발생했습니다:\n$1",
 	"logentry-html2wiki": "$1님이 $3 문서를 {{GENDER:$2|가져왔습니다}}"
 }
