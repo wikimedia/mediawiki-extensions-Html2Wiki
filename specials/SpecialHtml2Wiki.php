@@ -839,7 +839,7 @@ HERE;
             // putting the original source into GeSHi makes it "safe" from the parser
             // but destroys any ability to act on the 'source' by manipulating this
             // elements innerHTML
-            $out->addWikiText( '<source id="h2wContent" lang="html4strict">' . $this->mContent . '</source>' );
+            $out->addWikiTextAsInterface( '<source id="h2wContent" lang="html4strict">' . $this->mContent . '</source>' );
         }
     }
 
@@ -976,7 +976,7 @@ HERE
         $image = wfLocalFile( $title );
         $result = $image->upload( $tmpFile, $comment, $pageText );
         if ( $result !== false ) {
-            $out->addWikiText( '<div class="success">' . $title . ' was uploaded.  See [[:' . $title . ']] [[' . $title . '|thumb]]</div>' );
+            $out->addWikiTextAsInterface( '<div class="success">' . $title . ' was uploaded.  See [[:' . $title . ']] [[' . $title . '|thumb]]</div>' );
             $logEntry = new ManualLogEntry( 'html2wiki', 'import' ); // Log action 'import' in the Special:Log for 'html2wiki'
             $logEntry->setPerformer( $user ); // User object, the user who performed this action
             $logEntry->setTarget( $title ); // The page that this log entry affects, a Title object
@@ -1023,7 +1023,7 @@ HERE
         );
         $api->execute(); // actually save the article.
         // @todo convert this to a message with parameters to go in en.json
-        $out->addWikiText( '<div class="success">' . $title . ' was ' . $actionverb . '. See [[' . $title . ']]</div>' );
+        $out->addWikiTextAsInterface( '<div class="success">' . $title . ' was ' . $actionverb . '. See [[' . $title . ']]</div>' );
         $logEntry = new ManualLogEntry( 'html2wiki', 'import' ); // Log action 'import' in the Special:Log for 'html2wiki'
         $logEntry->setPerformer( $user ); // User object, the user who performed this action
         $logEntry->setTarget( $title ); // The page that this log entry affects, a Title object
