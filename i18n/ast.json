@@ -11,7 +11,7 @@
 	"html2wiki-desc": "Importar conteníu HTML na wiki",
 	"html2wiki-dry-run": "De prueba:",
 	"html2wiki-dry-run-heading": "¡Solo ye una vista previa! El conteníu nun se guardó:",
-	"html2wiki-summary": "La descripción apaez enriba de [[Special:Html2Wiki]], pero nun ye asina.",
+	"html2wiki-summary": "Importar páxines HTML na wiki",
 	"html2wiki-importbtn": "Importar",
 	"html2wiki-intro": "Usa esti formulariu pa importar conteníu HTML na wiki.\n\nSi subes un archivu zip, el campu Nome de colección úsase pa estremar la colección d'una versión posterior. Tamién tolos ficheros agruparánse nuna categoría col mesmu nome. Por casu, digamos que vas importar una colección de ficheros HTML de salida dende un sistema de software de documentación, escribiríes un identificador únicu de colección como 'FluxCapacitor-v1.1' de mou que tola colección impórtase nuna xerarquía d'artículos que principia por 'FluxCapacitor-v1.1'. D'esta manera pueden importase diez coleiciones diferentes sin chocar unes con otres.\n\nEspecificar un nome de colección existiente (o un camín al pa), anovará'l conteníu wiki existiente.\n\nSi quies importar un únicu ficheru nuna xerarquía d'artículos que yá existe, simplemente especifica'l so 'pa' como Nome de colección.\n\nPor casu, si vas importar un 'advanced_topics.html' nuevu que tendría d'existir en <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code>, el pa sedría 'FluxCapacitor-v1.1/docs/'",
 	"html2wiki-title": "Importar HTML",
