@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"html2wiki": "Uvoz HTML-sadržaja",
+	"html2wiki-summary": "Uvoz HTML-stranica u wiki",
+	"html2wiki-importbtn": "Uvezi - Увези",
+	"html2wiki-title": "Uvoz HTML-a",
+	"html2wiki-fieldset-legend": "Uvoz HTML-sadržaja",
+	"html2wiki_filenotfound": "Datoteka ($1) nije pronađena",
+	"html2wiki-filename": "Datoteka:",
+	"html2wiki-log-description": "Ispod je spisak najskorijih HTML-uvoženja",
+	"logentry-html2wiki": "$1 {{GENDER:$2|je uvezao|je uvezla}} stranicu $3"
+}
