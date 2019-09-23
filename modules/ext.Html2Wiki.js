@@ -15,7 +15,7 @@ var conf = mw.config.get([
 	'wgVersion' // The only one we're using at the moment
 ]);
 
-var edittoken = mw.user.tokens.get( 'editToken' );
+var edittoken = mw.user.tokens.get( 'csrfToken' );
 // alert( 'According to the api, you have an edit token of ' + edittoken );
 
 
