@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"html2wiki": "Importer HTML-innhold",
+	"html2wiki-collection-name": "Samlingsnavn, eller foreldresti:",
+	"html2wiki-comment": "Fil importert av [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "Importer HTML-innhold til wikien din",
+	"html2wiki-dry-run": "Prøvekjøring:",
+	"html2wiki-dry-run-heading": "Kun forhåndsvisning! Innholdet ble ikke lagret:",
+	"html2wiki-summary": "Importer HTML-sider til wikien",
+	"html2wiki-importbtn": "Importer",
+	"html2wiki-intro": "Bruk dette skjemaet for å importere HTML-innhold til wikien din.\n\nHvis du laster opp en zip-fil vil feltet samlingsnavn brukes for å skille samlingen fra en senere versjon. Alle filer vil også grupperes i en kategori med samme navn. Hvis du for eksempel importerer en samling HTML-filer som kommer fra dokumentasjonssystemet til programmet ditt, kan du skrive inn en unik samlings-ID som «FluxCapacitator-v1.1», sånn at hele samlingen importeres til et artikkelhierarki som begynner med «FluxCapacitator-v1.1». På denne måten kan 10 forskjellige samlinger importeres uten at de overskriver hverandre.\n\nHvis du angir et eksisterende samlingsnavn (eller foreldresti) vil eksisterende wikiinnhold bli oppdatert.\n\nHvis du ønsker å importere én enkel fil til et eksisterende artikkelhierarki kan du angi «forelderen» som samlingsnavnet.\n\nHvis du for eksempel skal importere en ny «advanced_topics.html» som bør eksistere som <code>«FluxCapacitator-v1.1/docs/advanced_topics.html»</code> bør forelderen være «FluxCapacitator-v1.1/docs/».",
+	"html2wiki-title": "Importer HTML",
+	"html2wiki-fieldset-legend": "Importer HTML-innhold",
+	"html2wiki_filenotfound": "Fil ($1) ikke funnet",
+	"html2wiki-text": "Individuell HTML (.html) samt arkivfiler støttes. Arkiver kan være .gz, .tar, .tar.gz, .tgz eller .zip. Bilder blir håndtert automatisk fra arkivfiler.",
+	"html2wiki-filename": "Filnavn:",
+	"html2wiki-not-allowed": "Beklager, men du må være administrator eller ha importrettigheter for å bruke dette skjemaet.",
+	"html2wiki-log-name": "HTML-importlogg",
+	"html2wiki-log-description": "Nedenfor er en liste over nylige HTML-importer",
+	"html2wiki_multiple_body": "Fant mer enn ett sett <body>-tagger i\n$1",
+	"html2wiki_uploaderror": "En feil oppsto under håndteringen av filopplastingen:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) kunne ikke tolke innholdet gitt i $1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|importerte}} siden $3"
+}
