@@ -1,6 +1,7 @@
 {
 	"require": {
-		"querypath/querypath": "> 3.0.0"
+		"querypath/querypath": "> 3.0.0",
+		"ezyang/htmlpurifier": "^4.10"
 	},
 	"require-dev": {
 		"jakub-onderka/php-parallel-lint": "1.0.0",
