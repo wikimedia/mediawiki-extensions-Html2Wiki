@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"html2wiki": "HTML içeriğini içe aktar",
+	"html2wiki-collection-name": "Koleksiyon adı; veya ana yol:",
+	"html2wiki-comment": "[https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki] tarafından içe aktarılan dosya",
+	"html2wiki-desc": "HTML içeriğini wikinize aktarın",
+	"html2wiki-dry-run": "Kuru çalışma:",
+	"html2wiki-dry-run-heading": "Yalnızca önizleme! İçerik kaydedilmedi:",
+	"html2wiki-summary": "HTML sayfalarını wikiye aktarın",
+	"html2wiki-importbtn": "İçe aktar",
+	"html2wiki-intro": "HTML içeriğini wiki'nize aktarmak için bu formu kullanın.\n\nBir zip dosyası yüklerseniz, koleksiyonu daha sonraki bir sürümden ayırmak için Koleksiyon Adı alanı kullanılır. Ayrıca tüm dosyalar bir kategoride aynı ada göre gruplandırılacaktır. Örneğin, yazılım dokümantasyon sisteminizden çıkan bir HTML dosyaları koleksiyonunu içe aktardığınızı varsayalım, 'FluxCapacitor-v1.1' gibi benzersiz bir Koleksiyon Kimliği girersiniz, böylece tüm koleksiyon 'ile başlayan bir makale hiyerarşisine aktarılır FluxCapacitor-v1.1' . Bu şekilde 10 farklı koleksiyon birbirini tıka basmadan ithal edilebilir.\n\nMevcut bir Koleksiyon Adı (veya üst yol) belirtildiğinde mevcut wiki içeriği güncellenir.\n\nTek bir dosyayı mevcut bir makale hiyerarşisine içe aktarmak istiyorsanız, koleksiyon adı olarak 'üst' öğesini belirtmeniz yeterlidir.\n\nÖrneğin, <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code> adresinde bulunması gereken yeni bir 'advanced_topics.html' içe aktarılıyorsa, üst öğe 'FluxCapacitor-v1.1/docs/'",
+	"html2wiki-title": "HTML'yi içe aktar",
+	"html2wiki-fieldset-legend": "HTML içeriğini içe aktar",
+	"html2wiki_filenotfound": "Dosya ($1) bulunamadı",
+	"html2wiki-text": "Tek tek HTML (.html) ve Arşiv dosyaları desteklenir. Arşivler .gz, .tar, .tar.gz, .tgz veya .zip olabilir. Görüntüler arşiv dosyalarından otomatik olarak işlenir.",
+	"html2wiki-filename": "Dosya adı:",
+	"html2wiki-not-allowed": "Maalesef, bu formu kullanabilmek için yönetici olmanız veya içe aktarma ayrıcalıklarına sahip olmanız gerekir.",
+	"html2wiki-log-name": "HTML içe aktarma günlüğü",
+	"html2wiki-log-description": "Aşağıda, en son HTML içe aktarmalarının bir listesi bulunmaktadır",
+	"html2wiki_multiple_body": "İçinde birden fazla <body> etiketi grubu bulundu\n$1",
+	"html2wiki_uploaderror": "Dosya yüklenirken bir hata oluştu:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) sağlanan içeriği $1 ayrıştıramadı",
+	"logentry-html2wiki": "$1 sayfası {{GENDER:$2|içe aktardı}} $3"
+}
