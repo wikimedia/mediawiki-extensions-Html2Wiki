@@ -1028,12 +1028,11 @@ HERE
 	 * be easier to use with AJAX, or if our own saveArticle serves as a better
 	 * model to do this.
 	 *
-	 * @global type $wgUser
+	 * @fixme is this function still needed?
 	 * @param type $title
 	 * @param type $category
 	 */
-	static function saveCat( $title, $category ) {
-		global $wgUser;
+	function saveCat( $title, $category ) {
 		$text = "\n[[Category:" . $category . "]]";
 		$params = new FauxRequest( [
 			'action' => 'edit',
@@ -1041,7 +1040,7 @@ HERE
 			'section' => 'new',
 			'title' => $title,
 			'appendtext' => $text,
-			'token' => $wgUser->getEditToken(), // $token."%2B%5C",
+			'token' => $this->getUser()->getEditToken(), // $token."%2B%5C",
 				], true, $_SESSION );
 		$api = new ApiMain( $params, true );
 		$api->execute();
