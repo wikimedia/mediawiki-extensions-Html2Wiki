@@ -175,10 +175,10 @@ class SpecialHtml2Wiki extends SpecialPage {
 		/**
 		 * @since 1.23 we can create our own Config object
 		 * @link https://www.mediawiki.org/wiki/Manual:Configuration_for_developers
-
-		  $wgConfigRegistry['html2wiki'] = 'GlobalVarConfig::newInstance';
-		  // Now, whenever you want your config object
-		  // $conf = ConfigFactory::getDefaultInstance()->makeConfig( 'html2wiki' );
+		 *
+		 * $wgConfigRegistry['html2wiki'] = 'GlobalVarConfig::newInstance';
+		 * // Now, whenever you want your config object
+		 * // $conf = ConfigFactory::getDefaultInstance()->makeConfig( 'html2wiki' );
 		 */
 		$out = $this->getOutput();
 
@@ -192,9 +192,9 @@ class SpecialHtml2Wiki extends SpecialPage {
 		 */
 		$user = $this->getUser();
 		/** @todo turn on this permission check
-		  if ( !$user->isAllowedAny( 'import', 'importupload' ) ) {
-		  throw new PermissionsError( 'import' );
-		  }
+		 * if ( !$user->isAllowedAny( 'import', 'importupload' ) ) {
+		 * throw new PermissionsError( 'import' );
+		 * }
 		 */
 		// Even without the isAllowsedAny check, the anonymous user sees
 		// 'No transwiki import sources have been defined and direct history uploads are disabled.'
@@ -314,11 +314,10 @@ class SpecialHtml2Wiki extends SpecialPage {
 		// we might want to add rights here, or else do it in a method called in exectute
 		// parent::__construct('Import Html', array('upload', 'reupload');
 
-		/** I don't think this is necessary with the new registration system **/
+		/** I don't think this is necessary with the new registration system */
 		if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 			require_once __DIR__ . '/vendor/autoload.php';
 		}
-		/**/
 	}
 
 	/**
@@ -459,7 +458,7 @@ HERE;
 	 * You can get the mimetype of an arbitrary file in bash with
 	 * file --mime-type $file
 	 *
-	 * @param $file string
+	 * @param string $file
 	 * @return bool|string
 	 */
 	public static function getMimeType( $file ) {
@@ -516,7 +515,7 @@ HERE;
 	 * This method was used in testing/development to work on a file that is local
 	 * to the server.  We could re-implement this if working on local files is desired
 	 * @param type $file
-	 * @return boolean
+	 * @return bool
 	 */
 	private function doLocalFile( $file ) {
 		$out = $this->getOutput();
@@ -880,7 +879,7 @@ HERE
 	 * 5) save it
 	 *
 	 * $this->mArticleSavePath, $this->mArticleTitle already set
-	 * @return boolean
+	 * @return bool
 	 */
 	private function processFile() {
 		// when only a single file is uploaded, we can populate content from tmp_name
@@ -983,7 +982,7 @@ HERE
 
 	private function makeTitle( $namespace = NS_MAIN ) {
 		$desiredTitleObj = Title::makeTitleSafe( $namespace, $this->mArticleTitle );
-		if ( !is_null( $desiredTitleObj ) ) {
+		if ( $desiredTitleObj !== null ) {
 			return $desiredTitleObj;
 		} else {
 			die( $this->mArticleTitle . " is an invalid filename" );
@@ -1170,11 +1169,11 @@ HERE
 	 *
 	 * @param string | array|null $tidyConfig
 	 * if passed as an array like so
-	  $tidyConfig = array(
-	  'indent'        => false,
-	  'output-xhtml'  => true,
-	  'wrap'          => 80
-	  );
+	 * $tidyConfig = array(
+	 * 'indent'        => false,
+	 * 'output-xhtml'  => true,
+	 * 'wrap'          => 80
+	 * );
 	 * then tidy will use the supplied configuration
 	 * Or, if passed as a string, tidy will use the configuration file
 	 * Left alone, it will load the config file supplied with Html2Wiki
@@ -1203,7 +1202,7 @@ HERE
 		}
 
 		$this->mTidyConfig = realpath( __DIR__ . "/../tidy.conf" );
-		if ( is_null( $tidyConfig ) ) {
+		if ( $tidyConfig === null ) {
 			$tidyConfig = $this->mTidyConfig;
 			$shellConfig = " -config $tidyConfig";
 		} elseif ( is_array( $tidyConfig ) ) {
@@ -1291,11 +1290,11 @@ HERE
 	 * http://schlitt.info/opensource/blog/0704_xpath.html
 	 * is like so
 	 * $nodes = $xpath->query('//a/@href');
-	  foreach($nodes as $href) {
-	  echo $href->nodeValue;                       // echo current attribute value
-	  $href->nodeValue = 'new value';              // set new attribute value
-	  $href->parentNode->removeAttribute('href');  // remove attribute
-	  }
+	 * foreach($nodes as $href) {
+	 * echo $href->nodeValue;                       // echo current attribute value
+	 * $href->nodeValue = 'new value';              // set new attribute value
+	 * $href->parentNode->removeAttribute('href');  // remove attribute
+	 * }
 	 * but QueryPath offers a CSS parser to more easily specify document objects
 	 *
 	 */
@@ -1311,8 +1310,8 @@ HERE
 	 * @return bool
 	 *
 	 * @usage example
-		$this->qpNormalizeLinks('a:link');
-		$this->qpNormalizeLinks('img');
+	 * $this->qpNormalizeLinks('a:link');
+	 * $this->qpNormalizeLinks('img');
 	 */
 	public function qpNormalizeLinks( $selector ) {
 		global $wgH2WEliminateDuplicateImages;
@@ -1440,10 +1439,10 @@ HERE
 	 *
 	 * Our source content looks like this (blank lines removed):
 	 * @source
-	   <a name="wp80923"></a><p class="pFigureTitle" id="MGC80923">
-		Figure 4-1. <a name="CRefID61031"></a>
-		Message Sequence Chart for a Normal mvc_sequence<a name='Graphic80921'></a><img src="images/message_sequence_chart__normal_mvc_sequence.jpg"  style='width:6.36667in;'  class="Aligncenter" id='wp80921' border='0' hspace='0' vspace='0'/>
-		</p>
+	 * <a name="wp80923"></a><p class="pFigureTitle" id="MGC80923">
+	 * Figure 4-1. <a name="CRefID61031"></a>
+	 * Message Sequence Chart for a Normal mvc_sequence<a name='Graphic80921'></a><img src="images/message_sequence_chart__normal_mvc_sequence.jpg"  style='width:6.36667in;'  class="Aligncenter" id='wp80921' border='0' hspace='0' vspace='0'/>
+	 * </p>
 	 * @source
 	 *
 	 * Pandoc will recognize and condense "title" and "alt" attributes, producing
@@ -1455,10 +1454,10 @@ HERE
 	 *
 	 * Our conversion currently looks like
 	 * @source
-	   <span id="wp80923"></span>
-	   Figure 4-1. <span id="CRefID61031"></span>
-	   Message Sequence Chart for a Normal mvc_sequence<span id="Graphic80921"></span>[[Image:images/message_sequence_chart__normal_mvc_sequence.jpg]]
-	 @source
+	 * <span id="wp80923"></span>
+	 * Figure 4-1. <span id="CRefID61031"></span>
+	 * Message Sequence Chart for a Normal mvc_sequence<span id="Graphic80921"></span>[[Image:images/message_sequence_chart__normal_mvc_sequence.jpg]]
+	 * @source
 	 *
 	 * This is because we already preserve "named anchors" by converting them to spans
 	 *
@@ -1483,7 +1482,7 @@ HERE
 			# preserve the collection name as part of the image path
 			$src = ( $this->mCollectionName ) ? "{$this->mCollectionName}/{$img->attr('src')}" : $img->attr( 'src' );
 			# which could also be explicitly removed if you want to 'flatten' your images
-			if ( !is_null( $removePathElement ) ) {
+			if ( $removePathElement !== null ) {
 				$src = str_replace( "$removePathElement/", '', $src );
 			}
 			$img->attr( 'src', $src );
@@ -1541,30 +1540,30 @@ HERE
 	 * There is a count() method, and a length property.
 	 * Note that because we remove the 'head' with Tidy, there is no 'head' to
 	 * remove with QP
-
-		object(QueryPath\DOMQuery)[476]
-		  private 'errTypes' => int 257
-		  protected 'document' =>
-			object(DOMDocument)[214]
-		  private 'options' =>
-			array (size=9)
-			  'ignore_parser_warnings' => boolean true
-			  'convert_to_encoding' => string 'ISO-8859-1' (length=10)
-			  'convert_from_encoding' => string 'auto' (length=4)
-			  'use_parser' => string 'html' (length=4)
-			  'parser_flags' => null
-			  'omit_xml_declaration' => boolean false
-			  'replace_entities' => boolean false
-			  'exception_level' => int 771
-			  'escape_xhtml_js_css_sections' => string '' (length=8)
-		  protected 'matches' =>
-			object(SplObjectStorage)[479]
-		  protected 'last' =>
-			object(SplObjectStorage)[482]
-		  private 'ext' =>
-			array (size=0)
-			  empty
-		  public 'length' => int 0
+	 *
+	 * object(QueryPath\DOMQuery)[476]
+	 *   private 'errTypes' => int 257
+	 *   protected 'document' =>
+	 *     object(DOMDocument)[214]
+	 *   private 'options' =>
+	 *     array (size=9)
+	 *       'ignore_parser_warnings' => boolean true
+	 *       'convert_to_encoding' => string 'ISO-8859-1' (length=10)
+	 *       'convert_from_encoding' => string 'auto' (length=4)
+	 *       'use_parser' => string 'html' (length=4)
+	 *       'parser_flags' => null
+	 *       'omit_xml_declaration' => boolean false
+	 *       'replace_entities' => boolean false
+	 *       'exception_level' => int 771
+	 *       'escape_xhtml_js_css_sections' => string '' (length=8)
+	 *   protected 'matches' =>
+	 *     object(SplObjectStorage)[479]
+	 *   protected 'last' =>
+	 *     object(SplObjectStorage)[482]
+	 *   private 'ext' =>
+	 *     array (size=0)
+	 *       empty
+	 *   public 'length' => int 0
 	 */
 	public static function qpClean( $content ) {
 		try {
@@ -1618,20 +1617,20 @@ HERE
 	 * e.g. <div class="foo">something</div>  ----->  ''something''
 	 *
 	 * Html2Wiki::qpItalics("div.foo");
-
-	public function qpItalics($selector = NULL) {
-		$qp = htmlqp($this->mContent);
-		$items = $qp->find($selector);
-		foreach ($items as $item) {
-			$text = $item->text();
-			$newtag = "''$text''";
-			$item->replaceWith($newtag);
-		}
-		$qp->top();
-		ob_start();
-		$qp->writeHTML();
-		$this->mContent = ob_get_clean();
-}
+	 *
+	 * public function qpItalics($selector = NULL) {
+	 * $qp = htmlqp($this->mContent);
+	 * $items = $qp->find($selector);
+	 * foreach ($items as $item) {
+	 * $text = $item->text();
+	 * $newtag = "''$text''";
+	 * $item->replaceWith($newtag);
+	 * }
+	 * $qp->top();
+	 * ob_start();
+	 * $qp->writeHTML();
+	 * $this->mContent = ob_get_clean();
+	 * }
 	 */
 
 	/**
