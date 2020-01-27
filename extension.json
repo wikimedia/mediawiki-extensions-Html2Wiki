@@ -35,7 +35,6 @@
 		"Html2WikiAlias": "Html2Wiki.i18n.alias.php"
 	},
 	"AutoloadClasses": {
-		"Html2WikiHooks": "Html2WikiHooks.php",
 		"SpecialHtml2Wiki": "specials/SpecialHtml2Wiki.php"
 	},
 	"ResourceModules": {

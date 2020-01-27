@@ -25,16 +25,13 @@ class SpecialHtml2Wiki extends SpecialPage {
 	private $mContent;
 	private $mContentRaw;  // the exact contents which were uploaded
 	private $mContentTidy; // Raw afer it's passed through tidy
-	private $mLocalFile;   // unused except in doLocalFile()
 	/** @var string The (original) name of the uploaded file */
 	private $mFilename; // supplied
 	public $mArticleTitle; // created by mArticleSavePath and mFilename or unWrap
 
 	/** @var int The size, in bytes, of the uploaded file. */
 	private $mFilesize;
-	private $mSummary;
 	private $mIsDryRun; // @var bool false option to save or only preview results
-	private $mIsTidy;      // @var bool true once passed through tidy
 	private $mTidyErrors;  // the error output of tidy
 	private $mTidyConfig;  // the configuration we want to use for tidy.
 	private $mMimeType;  // the detected or inferred mime-type of the upload
@@ -58,13 +55,10 @@ class SpecialHtml2Wiki extends SpecialPage {
 	 */
 	public $mIsRecognized;
 
-	public $mImages;  // an array of image files that should be imported
 	public $mFilesAreProcessed; // boolean, whether we've (uploaded and) processed content files
 	public $mResults; // the HTML-formatted result report of an import
 	public $mFileCountExpected; // the number of files we expect to process
 	public $mFileCountProcessed; // the number of files we've actually processed
-
-	/* Protected Static Members */
 
 	/** @var array List of common image files extensions and MIME-types
 	 * and HTML MIME-type
@@ -80,10 +74,6 @@ class SpecialHtml2Wiki extends SpecialPage {
 		'tiff' => 'image/tiff',
 		'xbm' => 'image/x-xbitmap',
 		'svg' => 'image/svg+xml',
-		// compression only files, disallow
-		// 'tar' => 'application/x-tar',
-		// 'bz2' => 'application/x-bzip2', // bzip2
-		// 'gz'  => 'application/x-gzip',
 		// HTML content
 		'htm' => 'text/html',
 		'html' => 'text/html',
@@ -119,48 +109,10 @@ class SpecialHtml2Wiki extends SpecialPage {
 		"write-back" => 0
 	];
 
-	/** @todo review and cull the properties that we use here
-	 * These properties were copied from Special:Upload assuming they'd be
-	 * applicable to our use case.
-	 */
-
 	/** @var WebRequest|FauxRequest The request this form is supposed to handle */
 	public $mRequest;
-	public $mSourceType;
 
-	/** @var UploadBase */
-	public $mUpload;
-	public $mUploadClicked;
-
-	/** User input variables from the "description" section * */
-
-	/** @var string The requested target file name */
-	public $mDesiredDestName;
 	public $mComment;
-	public $mLicense; // don't know if we'll bother with this
-
-	/** User input variables from the root section * */
-	public $mIgnoreWarning;
-	public $mWatchthis;
-	public $mCopyrightStatus;
-	public $mCopyrightSource;
-
-	/** Hidden variables * */
-	public $mDestWarningAck;
-
-	/** @var bool The user followed an "overwrite this file" link */
-	public $mForReUpload;
-
-	/** @var bool The user clicked "Cancel and return to upload form" button */
-	public $mCancelUpload;
-	public $mTokenOk;
-
-	/** @var bool Subclasses can use this to determine whether a file was uploaded */
-	public $mUploadSuccessful = false;
-
-	/** Text injection points for hooks not using HTMLForm * */
-	public $uploadFormTextTop;
-	public $uploadFormTextAfterSummary;
 
 	public function doesWrites() {
 		return true;
@@ -169,17 +121,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 	/**
 	 * Shows the page to the user.
 	 * @param string $sub The subpage string argument (if any).
-	 *  [[Special:HelloWorld/subpage]].
 	 */
 	public function execute( $sub ) {
-		/**
-		 * @since 1.23 we can create our own Config object
-		 * @link https://www.mediawiki.org/wiki/Manual:Configuration_for_developers
-		 *
-		 * $wgConfigRegistry['html2wiki'] = 'GlobalVarConfig::newInstance';
-		 * // Now, whenever you want your config object
-		 * // $conf = ConfigFactory::getDefaultInstance()->makeConfig( 'html2wiki' );
-		 */
 		$out = $this->getOutput();
 
 		$out->setPageTitle( $this->msg( 'html2wiki-title' ) );
@@ -191,11 +134,6 @@ class SpecialHtml2Wiki extends SpecialPage {
 		 * HTML content.
 		 */
 		$user = $this->getUser();
-		/** @todo turn on this permission check
-		 * if ( !$user->isAllowedAny( 'import', 'importupload' ) ) {
-		 * throw new PermissionsError( 'import' );
-		 * }
-		 */
 		// Even without the isAllowsedAny check, the anonymous user sees
 		// 'No transwiki import sources have been defined and direct history uploads are disabled.'
 		# @todo Allow Title::getUserPermissionsErrors() to take an array
@@ -303,143 +241,12 @@ class SpecialHtml2Wiki extends SpecialPage {
 	}
 
 	/**
-	 * Constructor : initialise object
 	 * Get data POSTed through the form and assign them to the object
 	 * @param WebRequest|null $request Data posted.
 	 * We'll use the parent's constructor to instantiate the name but not perms
 	 */
 	public function __construct( $request = null ) {
-		$name = 'Html2Wiki';
-		parent::__construct( $name );
-		// we might want to add rights here, or else do it in a method called in exectute
-		// parent::__construct('Import Html', array('upload', 'reupload');
-
-		/** I don't think this is necessary with the new registration system */
-		if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
-			require_once __DIR__ . '/vendor/autoload.php';
-		}
-	}
-
-	/**
-	 * A function to test for the dependencies that need to be installed before
-	 * Html2Wiki will run properly
-	 */
-	static function checkEnvironment() {
-		global $wgNamespacesWithSubpages;
-			if ( $wgNamespacesWithSubpages[NS_MAIN] !== true ) {
-				die( "This extension requires \$wgNamespacesWithSubpages set to TRUE in the MAIN namespace.
-                Please add \n
-                \$wgNamespacesWithSubpages[NS_MAIN] = true;\n to your LocalSettings.php" );
-			}
-		global $tidy;
-		$hasPandoc = self::command_exists( 'pandoc' );
-		$hasQueryPath = class_exists( "QueryPath", true ) ? true : false;
-		$hasComposer = self::command_exists( 'composer' );
-		$hasTidyModule = class_exists( 'Tidy', true ) ? true : false;
-		$tidyCmd = self::command_exists( 'tidy' );
-
-		$projectURL = "https://www.mediawiki.org/wiki/Extension:Html2Wiki";
-		$cwd = __DIR__;
-
-		if ( $hasPandoc && $hasQueryPath && $hasTidyModule ) {
-			return true;
-		}
-
-		if ( !$hasTidyModule ) {
-			if ( $tidyCmd ) {
-				// falling back to the binary Tidy
-				$tidy = $tidyCmd;
-			} else {
-				$msg = "Html2Wiki requires Tidy.\n\n";
-				if ( version_compare( PHP_VERSION, '5.0.0', '<' ) ) {
-					$msg .= "The Tidy extension for PHP is preferred and comes bundled with PHP 5.0+ but you are running an older version of PHP.  Html2Wiki has not been tested on old versions of PHP. You should upgrade PHP\n\n";
-				}
-				$msg .= "You can install the extension with something like sudo apt-get install php5-tidy\n\n";
-				$msg .= "Please see the installation instructions at $projectURL for more info.";
-				die( nl2br( $msg ) );
-			}
-		}
-
-		// Test for the presence of pandoc which is required.
-		// Maybe use pandoc-php (https://github.com/ryakad/pandoc-php) in the future
-		// if we support more conversions
-		if ( !$hasPandoc ) {
-			$msg = <<<HERE
-        Html2Wiki requires pandoc.
-
-        On Ubuntu systems this is as simple as
-        sudo apt-get install pandoc
-
-        Please see the installation instructions at $projectURL for more info.
-HERE;
-			die( nl2br( $msg ) );
-		}
-
-		if ( !$hasQueryPath ) {
-			if ( $hasComposer ) {
-				$msg = <<<HERE
-        Html2Wiki requires the QueryPath library.
-
-        It can be installed using the 'Composer' utility.  Composer will automatically
-        download and install the right version of QueryPath for you, placing it within
-        your Html2Wiki 'vendor' subdirectory and updating the autoloader.  You already
-        have Composer, so all you need to do is enter these commands in your console:
-
-        cd $cwd ;
-        composer install
-
-        Then reload this page.
-HERE;
-				die( nl2br( $msg ) );
-			} else {
-				$msg = <<<HERE
-        Html2Wiki requires the QueryPath library.
-
-        It is best to install QueryPath using the 'Composer' utility.
-        (Composer will automatically download and install the right version of QueryPath
-        for you, placing it within your Html2Wiki 'vendor' subdirectory and updating the autoloader.)
-
-        Please see the installation instructions at $projectURL for more info.
-HERE;
-				die( nl2br( $msg ) );
-			}
-		}
-	}
-
-	/**
-	 * Determine if an executable exists in the underlying environment
-	 * Windows has a command 'where' that is similar to 'which'
-	 * PHP_OS is currently WINNT for every Windows version supported by PHP
-	 * So if we detect Windows we'll use 'where'
-	 * Otherwise we'll assume a POSIX system and use 'command' which is
-	 * more reliable than trying to use 'which' for all other systems
-	 *
-	 * @param string $command The command to check
-	 * @return the path to the command if the command has been found ; otherwise, false.
-	 */
-	public static function command_exists( $command ) {
-		$exists = ( PHP_OS == 'WINNT' ) ? 'where' : 'command -v';
-		$process = proc_open(
-			"$exists $command",
-			[
-			0 => [ "pipe", "r" ], // STDIN
-			1 => [ "pipe", "w" ], // STDOUT
-			2 => [ "pipe", "w" ], // STDERR
-			],
-			$pipes
-		);
-		if ( $process !== false ) {
-			$stdout = stream_get_contents( $pipes[1] );
-			$stderr = stream_get_contents( $pipes[2] );
-			fclose( $pipes[1] );
-			fclose( $pipes[2] );
-			proc_close( $process );
-			if ( $stdout != '' ) {
-				return $stdout;
-			}
-			return false;
-		}
-		return false;
+		parent::__construct( 'Html2Wiki' );
 	}
 
 	/**
@@ -512,27 +319,6 @@ HERE;
 	}
 
 	/**
-	 * This method was used in testing/development to work on a file that is local
-	 * to the server.  We could re-implement this if working on local files is desired
-	 * @param type $file
-	 * @return bool
-	 */
-	private function doLocalFile( $file ) {
-		$out = $this->getOutput();
-		if ( !file_exists( $file ) ) {
-			$out->wrapWikiMsg(
-					"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_filenotfound', $file ]
-			);
-			return false;
-		}
-		$this->mLocalFile = $file;
-		$this->mFilename = basename( $file );
-		$this->mContentRaw = file_get_contents( $file );
-		$this->mFilesize = filesize( $file );
-		return true;
-	}
-
-	/**
 	 * Upload user nominated file.
 	 *
 	 * The user may nominate either a single HTML file, or a zip/tar archive of
@@ -592,16 +378,6 @@ HERE;
 			 * and it will be after upload if we don't move it from the tmp_name
 			 * So, we can process it, and only use the result, while PHP destroys
 			 * the original source
-			 *
-			  if (!move_uploaded_file(
-			  $_FILES['userfile']['tmp_name'],
-			  sprintf('./uploads/%s.%s',
-			  sha1_file($_FILES['userfile']['tmp_name']),
-			  $ext
-			  )
-			  )) {
-			  throw new RuntimeException('Failed to move uploaded file.');
-			  }
 			 */
 			if ( !is_uploaded_file( $_FILES['userfile']['tmp_name'] ) ) {
 				throw new RuntimeException( 'There was a failure in the file upload' );
@@ -612,8 +388,6 @@ HERE;
 			);
 			return false;
 		}
-		// Don't assign the tmp_name to another variable because the file goes away
-		// $this->mFile = $_FILES['userfile']['tmp_name'];
 		$this->mFilename = $this->mOriginal['filename'] = $_FILES['userfile']['name'];
 		$this->mFilesize = $this->mOriginal['filesize'] = $_FILES['userfile']['size'];
 
@@ -622,10 +396,6 @@ HERE;
 			case 'application/x-gtar':
 			case 'application/zip':
 				// @todo Do we disallow uploading a zip file without a collection name?
-				// empty just tests if a var is "falsey"
-				if ( empty( $this->mCollectionName ) ) {
-					// warn that you can't do that
-				}
 
 				// unwrap the file
 				$this->unwrapZipFile();
@@ -694,21 +464,12 @@ HERE;
 			while ( $zip_entry = zip_read( $zipHandle ) ) {
 				$entry = zip_entry_name( $zip_entry );
 				switch ( $entry ) {
-
-					// The html/ folder adds almost 1,000% more files in the case of Info Hubs
-					// case ( preg_match('#(?:htmldocs|html)/.*\.html?$#i', $entry)? $entry : '' ): #10,865  This matches REI content plus the 'html' folder as well
 					case ( preg_match( '#htmldocs/.*\.html?$#i', $entry ) ? $entry : '' ): # 1,112  // This matches REI content
 					case ( preg_match( '#docs/html/files/.*\.html?$#i', $entry ) ? $entry : '' ):  // This is for UNH content
 					case ( preg_match( '#\.html?$#i', $entry ) ? $entry : '' ):
-						// a temporary filter to process a small number of files
-						// if ( preg_match('#advanced_topics|axi_user#', $entry) ) {
 							$availableFiles[] = $entry;
-							// $this->mIsRecognized = true;
-						// }
 						break;
 
-					// The html/ folder adds 40% more images
-					// case ( preg_match('#(?:htmldocs|html)/.*/images/.*\.(?:jpe?g|png|gif)$#i', $entry)? $entry : '' ): #715
 					case ( preg_match( '#htmldocs/.*/images/.*\.(?:jpe?g|png|gif)$#i', $entry ) ? $entry : '' ):  # 511
 					case ( preg_match( '#docs/html/images/.*\.(?:jpe?g|png|gif)$#i', $entry ) ? $entry : '' ):  // This is for UNH content
 					case ( preg_match( '#\.(?:jpe?g|png|gif)$#i', $entry ) ? $entry : '' ):  // all png, jpg, gif images
@@ -722,14 +483,11 @@ HERE;
 
 					default:
 						// if a simple print doesn't work, then your switch has bad syntax
-						// print "$entry\n";
 						break;
 				}
 			}
 			zip_close( $zipHandle );
 		}
-		// wfDebug( __METHOD__ . ": done with first inventory of zip archive" );
-		// if ($this->mIsRecognized) {
 		if ( count( $availableFiles ) || count( $availableImages ) ) {
 			$imageCount = 0;
 			$zipHandle = zip_open( $zipfile );
@@ -766,7 +524,6 @@ HERE;
 						}
 						$this->mFilesize = zip_entry_filesize( $zip_entry );
 						$this->mComment = "Html2Wiki imported {$this->mFilename} (" . $this->formatValue( $this->mFilesize ) . ")";
-						// $this->mMimeType = 'image/jpg'; // don't spoof  upload() will get the proper mimetype and handler
 						$this->mArticleTitle = ( $this->mCollectionName ) ? "{$this->mCollectionName}/{$this->mFilename}" : $this->mFilename;
 						if ( zip_entry_open( $zipHandle, $zip_entry, "r" ) ) {
 							$buf = zip_entry_read( $zip_entry, zip_entry_filesize( $zip_entry ) );
@@ -782,7 +539,6 @@ HERE;
 				zip_close( $zipHandle );
 			}
 		unlink( $zipfile );
-		// wfDebug( __METHOD__ . ": processed $imageCount images" );
 		} else {
 			$out->addHTML( '<div><pre>' );
 			$out->addHTML( 'This zip archive does not contain any HTML or image files to process' );
@@ -796,29 +552,12 @@ HERE;
 	}
 
 	/**
-	 * Not sure when we'll use this, but the intent was to create
-	 * an ajax interface to manipulate the file like wikEd
-	 */
-	private function showRaw() {
-		$out = $this->getOutput();
-		$out->addModules( [ 'ext.Html2Wiki' ] ); // add our javascript and css
-		$out->addHTML( '<div class="mw-ui-button-group">'
-				. '<button class="mw-ui-button mw-ui-progressive" '
-				. 'form="html2wiki-form" formmethod="post" id="h2wWand" name="h2wWand">'
-				. '<img src="/w/extensions/Html2Wiki/modules/images/icons/wand.png" '
-				. 'alt="wand"/></button>'
-				. '</div><div style="clear:both"></div>' );
-		$out->addHTML( '<div id="h2wContent">' . $this->mContentRaw . '</div>' );
-	}
-
-	/**
 	 * displays $this->mContent (in a <source> block)
 	 * optionally passed through htmlentities() and nl2br()
 	 */
 	private function showContent( $showEscaped = false ) {
 		$out = $this->getOutput();
 		$out->addModules( [ 'ext.Html2Wiki' ] ); // add our javascript and css
-		// @todo Error or warn here if not $mIsTidy or $mIsPure
 
 		if ( $showEscaped ) {
 			$escapedContent = $this->escapeContent();
@@ -839,18 +578,6 @@ HERE;
 		$this->mResults .= "<li>{$this->mFilename} ({$size}) {$this->mMimeType}</li>\n";
 	}
 
-	private function listFile() {
-		$out = $this->getOutput();
-		$out->addModules( [ 'ext.Html2Wiki' ] ); // add our javascript and css
-		$size = $this->formatValue( $this->mFilesize );
-		$out->addHTML( <<<HERE
-                <ul class="mw-ext-Html2Wiki">
-                    <li>{$this->mFilename} ({$size}) {$this->mMimeType}</li>
-                </ul>
-HERE
-		);
-	}
-
 	private function showResults() {
 		$out = $this->getOutput();
 		$out->addHTML( '<div id="h2wContent"><ul class="mw-ext-Html2Wiki">' . $this->mResults . '</ul></div>' );
@@ -865,7 +592,6 @@ HERE
 	 */
 	public function panDoc2Wiki() {
 		$tempfilename = $this->makeTempFile( $this->mContent );
-		// file_put_contents($stage/$tempfilename, $this->mContent);
 		$this->mContent = shell_exec( "pandoc -f html -t mediawiki $tempfilename" );
 		unlink( $tempfilename );
 	}
@@ -894,8 +620,6 @@ HERE
 		// QueryPath is finicky because HTML is wild and untamed
 		try {
 			$this->mContent = self::qpClean( $this->mContent );
-			// qpCleanLinks is a stronger version of qpRemoveMouseOvers
-			// $this->qpCleanLinks();
 			// Remove mouseovers and onclick handlers in links
 			$this->qpRemoveMouseOvers();
 			// turn <a name="foo"></a> to <span name="foo"></span> for intradocument links
@@ -913,8 +637,6 @@ HERE
 			// example of using a static method that would be available without
 			// an Html2Wiki object (outside the class)
 			$this->mContent = self::qpItalics( $this->mContent, 'span.cItalic' );
-			// functional version is commented out, but works just as well
-			// $this->qpItalics('span.cItalic');
 		} catch ( Exception $e ) {
 			$out = $this->getOutput();
 			$out->wrapWikiMsg(
@@ -933,14 +655,11 @@ HERE
 			$this->mContent .= "\n[[Category:{$this->mCollectionName}]]";
 		}
 
-// $this->showRaw();
-
 		if ( $this->mIsDryRun ) {
 			$this->showContent();
 		} else {
 			$this->saveArticle();
 		}
-		// self::saveCat($this->mFilename, 'Html2Wiki Imports');
 		$this->addFileToResults();
 
 		return true;
@@ -948,7 +667,6 @@ HERE
 
 	/**
 	 * Save an image in the File namespace
-	 *
 	 */
 	public function saveImage( $tmpFile ) {
 		global $wgH2WProcessImages;
@@ -1018,31 +736,6 @@ HERE
 		$logEntry->setTarget( $title ); // The page that this log entry affects, a Title object
 		$logEntry->setComment( $this->mComment );
 		$logid = $logEntry->insert();
-		// optionally publish the log item to recent changes
-		// $logEntry->publish( $logid );
-	}
-
-	/**
-	 * Function borrowed from msUpload extension.  Not sure if this will
-	 * be easier to use with AJAX, or if our own saveArticle serves as a better
-	 * model to do this.
-	 *
-	 * @fixme is this function still needed?
-	 * @param type $title
-	 * @param type $category
-	 */
-	function saveCat( $title, $category ) {
-		$text = "\n[[Category:" . $category . "]]";
-		$params = new FauxRequest( [
-			'action' => 'edit',
-			'nocreate' => 'true', // throw an error if the page doesn't exist
-			'section' => 'new',
-			'title' => $title,
-			'appendtext' => $text,
-			'token' => $this->getUser()->getEditToken(), // $token."%2B%5C",
-				], true, $_SESSION );
-		$api = new ApiMain( $params, true );
-		$api->execute();
 	}
 
 	/**
@@ -1178,7 +871,6 @@ HERE
 	 * Or, if passed as a string, tidy will use the configuration file
 	 * Left alone, it will load the config file supplied with Html2Wiki
 	 *
-	 * On success, populate $this->mIsTidy = true
 	 * @return bool
 	 *
 	 * In testing tidy from the command line, it would NOT use a configuration file
@@ -1209,9 +901,6 @@ HERE
 			$shellConfig = $this->makeConfigStringForTidy( $tidyConfig );
 		} elseif ( is_string( $tidyConfig ) ) {
 			$shellConfig = " -config $tidyConfig";
-			if ( !is_readable( $tidyConfig ) ) {
-				// echo "Tidy's config not found, or not readable\n";
-			}
 		}
 		if ( class_exists( 'Tidy', true ) ) {
 			$encoding = 'utf8';
@@ -1281,25 +970,6 @@ HERE
 	}
 
 	/**
-	 * Using the QueryPath library to manipulate our source document.
-	 *
-	 * QueryPath is a jQuery-like library for working with XML and HTML
-	 * documents in PHP.
-	 *
-	 * Doing this with xPath directly like explained at
-	 * http://schlitt.info/opensource/blog/0704_xpath.html
-	 * is like so
-	 * $nodes = $xpath->query('//a/@href');
-	 * foreach($nodes as $href) {
-	 * echo $href->nodeValue;                       // echo current attribute value
-	 * $href->nodeValue = 'new value';              // set new attribute value
-	 * $href->parentNode->removeAttribute('href');  // remove attribute
-	 * }
-	 * but QueryPath offers a CSS parser to more easily specify document objects
-	 *
-	 */
-
-	/**
 	 * Function to convert relative links to their wikified equivalents to preserve
 	 * the imported collection's relative hierarchy in the wiki for imported Collections.
 	 *
@@ -1318,6 +988,7 @@ HERE
 		try {
 			$qp = htmlqp( $this->mContent, $selector );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1340,7 +1011,6 @@ HERE
 		// MWDebug::log('Save Path is ' . $this->mArticleSavePath);
 		$arrPath = explode( '/', rtrim( $this->mArticleSavePath, '/' ) );
 		foreach ( $qp as $item ) {
-			$levels = false;
 			$isAbsolute = false;
 			$ { $attribute } = $item->attr( $attribute );
 			// skip over absolute references, unless is a friggin google tracker virus
@@ -1463,13 +1133,12 @@ HERE
 	 *
 	 * What we'll do in this function is grab the "text" portion of the parent
 	 * paragraph element and create a title attribute for our image.
-	 *
-	 *
 	 */
 	public function qpAlterImageLinks( $removePathElement = null ) {
 		try {
 			$qp = htmlqp( $this->mContent, 'img' );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1508,6 +1177,7 @@ HERE
 		try {
 			$qp = htmlqp( $content, $selector, $options );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1569,6 +1239,7 @@ HERE
 		try {
 			$qp = htmlqp( $content );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1591,96 +1262,11 @@ HERE
 		return $return;
 	}
 
-	/**
-	 * A method to remove HTML elements according to their ID
-	 * @param string $content a document fragment
-	 * @param string $selector an element id like '#foo', or .class but that is more destructive
-	 * @return string
-	 */
-	public static function qpRemoveIds( $content, $selector ) {
-		try {
-			$qp = htmlqp( $content, $selector )->remove();
-		} catch ( Exception $e ) {
-			$out->wrapWikiMsg(
-				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
-			);
-			return false;
-		}
-		ob_start();
-		$qp->writeHTML();
-		$return = ob_get_clean();
-		return $return;
-	}
-
-	/**
-	 * Provide a selector to transform HTML to wiki text markup for italics
-	 * e.g. <div class="foo">something</div>  ----->  ''something''
-	 *
-	 * Html2Wiki::qpItalics("div.foo");
-	 *
-	 * public function qpItalics($selector = NULL) {
-	 * $qp = htmlqp($this->mContent);
-	 * $items = $qp->find($selector);
-	 * foreach ($items as $item) {
-	 * $text = $item->text();
-	 * $newtag = "''$text''";
-	 * $item->replaceWith($newtag);
-	 * }
-	 * $qp->top();
-	 * ob_start();
-	 * $qp->writeHTML();
-	 * $this->mContent = ob_get_clean();
-	 * }
-	 */
-
-	/**
-	 * Remove all attributes on anchor tags except for the href
-	 */
-	public function qpCleanLinks() {
-		$options = [ 'ignore_parser_warnings' => true ];
-		try {
-			$qp = htmlqp( $this->mContent, null, $options );
-		} catch ( Exception $e ) {
-			$out->wrapWikiMsg(
-				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
-			);
-			return false;
-		}
-		$anchors = $qp->find( 'a:link' );
-		if ( $anchors->length == 0 ) {
-			return false;
-		}
-		// first ditch all the other attributes of true anchor tags
-		foreach ( $anchors as $anchor ) {
-			$href = $anchor->attr( 'href' );
-			$linktext = $anchor->text();
-			$newtag = "<a href=\"$href\">$linktext</a>";
-			$anchor->replaceWith( $newtag );
-		}
-		// now go back to the top and ditch empty anchors
-		$ea = $qp->top()->find( 'a' );
-		foreach ( $ea as $anchor ) {
-			if ( $anchor->hasAttr( 'href' ) ) {
-				if ( substr( $href, 0, 1 ) == '#' ) {
-					$anchor->remove(); // remove intra-document links
-				}
-			} else {
-				// no href, it's a target
-				// remove all id'd anchor targets
-				$anchor->remove();
-			}
-		}
-		 $qp->top();
-		 ob_start();
-		 $qp->writeHTML();
-		 $this->mContent = ob_get_clean();
-		 return true;
-	}
-
 	public static function qpLinkToSpan( $content ) {
 		try {
 			$qp = htmlqp( $content, 'a' );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1723,6 +1309,7 @@ HERE
 		try {
 			$qp = htmlqp( $this->mContent, 'a:link' );
 		} catch ( Exception $e ) {
+			// FIXME: There is no $out!
 			$out->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
@@ -1743,9 +1330,6 @@ HERE
 		return true;
 	}
 
-	/**
-	 *
-	 */
 	public function cleanFile() {
 		// delete content tags
 		$reHead = "#<head>.*?</head>#is";
@@ -1830,8 +1414,8 @@ HERE
 	/**
 	 * A convenience function to temporarily store contents so that we can use
 	 * other tools or methods that expect to work on a file rather than a stream
-	 * @param type $content
-	 * @return type
+	 * @param string $content
+	 * @return string
 	 */
 	public function makeTempFile( $content ) {
 		if ( $this->mDataDir ) {
