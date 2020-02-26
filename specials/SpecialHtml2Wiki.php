@@ -10,6 +10,9 @@
  *
  * @todo implement style guide https://www.mediawiki.org/wiki/Design/Living_style_guide
  */
+
+use MediaWiki\MediaWikiServices;
+
 class SpecialHtml2Wiki extends SpecialPage {
 
 	/** @var array of original file upload attributes
@@ -136,16 +139,34 @@ class SpecialHtml2Wiki extends SpecialPage {
 		$user = $this->getUser();
 		// Even without the isAllowsedAny check, the anonymous user sees
 		// 'No transwiki import sources have been defined and direct history uploads are disabled.'
-		# @todo Allow Title::getUserPermissionsErrors() to take an array
-		# @todo FIXME: Title::checkSpecialsAndNSPermissions() has a very weird expectation of what
-		# getUserPermissionsErrors() might actually be used for, hence the 'ns-specialprotected'
-		$errors = wfMergeErrorArrays(
-				$this->getPageTitle()->getUserPermissionsErrors(
-						'import', $user, true, [ 'ns-specialprotected', 'badaccess-group0', 'badaccess-groups' ]
-				), $this->getPageTitle()->getUserPermissionsErrors(
-						'importupload', $user, true, [ 'ns-specialprotected', 'badaccess-group0', 'badaccess-groups' ]
+		# @todo Allow PermissionManager::getPermissionErrors() to take an array
+		# @todo FIXME: PermissionManager::checkSpecialsAndNSPermissions() has a very weird expectation
+		# of what getPermissionErrors() might actually be used for, hence the 'ns-specialprotected'
+		$title = $this->getPageTitle();
+		$ignoreErrors = [ 'ns-specialprotected', 'badaccess-group0', 'badaccess-groups' ];
+		if ( class_exists( 'MediaWiki\Permissions\PermissionManager' ) ) {
+			// MW 1.33+
+			$permManager = MediaWikiServices::getInstance()->getPermissionManager();
+			$errors = wfMergeErrorArrays(
+				$permManager->getPermissionErrors(
+					'import', $user, $title,
+					'secure', // Cannot access PermissionManager::RIGOR_SECURE,
+					$ignoreErrors
+				),
+				$permManager->getPermissionErrors(
+					'importupload', $user, $title, 'secure', $ignoreErrors
 				)
-		);
+			);
+		} else {
+			$errors = wfMergeErrorArrays(
+				$title->getUserPermissionsErrors(
+					'import', $user, true, $ignoreErrors
+				),
+				$title->getUserPermissionsErrors(
+					'importupload', $user, true, $ignoreErrors
+				)
+			);
+		}
 
 		if ( $errors ) {
 			throw new PermissionsError( 'import', $errors );
