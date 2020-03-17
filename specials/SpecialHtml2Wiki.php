@@ -278,7 +278,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 	 *
 	 * @return string
 	 */
-	function getGroupName() {
+	protected function getGroupName() {
 		return 'media';
 	}
 
@@ -430,7 +430,6 @@ class SpecialHtml2Wiki extends SpecialPage {
 
 			default:
 				return false;
-				break;
 		}
 		// we know about all the images that are referenced, make sure they are
 		// in the wiki
@@ -568,7 +567,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 		}
 	}
 
-	function formatValue( $value ) {
+	private function formatValue( $value ) {
 		return htmlspecialchars( $this->getLanguage()->formatSize( $value ) );
 	}
 
@@ -762,9 +761,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 	/**
 	 * We don't have to worry about access restrictions here, because the whole
 	 * SpecialPage is restricted to users with "import" privs.
-	 * @var string $message is an optional error message that gets displayed
+	 * @param string|null $message is an optional error message that gets displayed
 	 * on form re-display
-	 *
 	 */
 	private function showForm( $message = null ) {
 		$action = $this->getPageTitle()->getLocalURL( [ 'action' => 'submit' ] );
@@ -996,13 +994,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 	 *
 	 * Multi-variant, works on images and anchors
 	 *
-	 * @global type $wgH2WEliminateDuplicateImages
-	 * @param string $selector is a CSS3 selector
+	 * @param string $selector is a CSS3 selector, e.g. "a:link" or "img"
 	 * @return bool
-	 *
-	 * @usage example
-	 * $this->qpNormalizeLinks('a:link');
-	 * $this->qpNormalizeLinks('img');
 	 */
 	public function qpNormalizeLinks( $selector ) {
 		global $wgH2WEliminateDuplicateImages;
@@ -1086,7 +1079,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 	 *
 	 * Optionally can strip a path element from the src attribute
 	 *
-	 * @var $removePathElement is a string that will be stripped from the resultant image
+	 * @param string|null $removePathElement is a string that will be stripped from the resultant image
 	 * tag src attribute
 	 * @return bool true on completion
 	 *
