@@ -700,7 +700,12 @@ class SpecialHtml2Wiki extends SpecialPage {
 		$pageText = "[[Category:Html2Wiki]]";
 
 		$title = $this->makeTitle( NS_FILE );
-		$image = wfLocalFile( $title );
+		if ( method_exists( MediaWikiServices::class, 'getRepoGroup' ) ) {
+			// MediaWiki 1.34+
+			$image = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->newFile( $title );
+		} else {
+			$image = wfLocalFile( $title );
+		}
 		$result = $image->upload( $tmpFile, $comment, $pageText );
 		if ( $result !== false ) {
 			$out->addWikiTextAsInterface( '<div class="success">' . $title . ' was uploaded.  See [[:' . $title . ']] [[' . $title . '|thumb]]</div>' );
