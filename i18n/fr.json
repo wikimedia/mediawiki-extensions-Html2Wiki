@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Greg Rundlett",
 			"Orlodrim",
-			"Wladek92",
-			"Gomoko",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"html2wiki": "Importer du contenu HTML",

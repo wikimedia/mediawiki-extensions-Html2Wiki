@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jango",
 			"Priviet",
 			"Revi",
-			"아라",
 			"Ykhwong",
-			"Jango"
+			"아라"
 		]
 	},
 	"html2wiki-summary": "HTML 문서를 위키로 가져옵니다",

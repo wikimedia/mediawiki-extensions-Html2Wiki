@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"freephile",
-			"Umherirrender",
-			"Robby",
 			"Hamilton Abreu",
 			"Nemo bis",
-			"Zoranzoki21"
+			"Robby",
+			"Umherirrender",
+			"Zoranzoki21",
+			"freephile"
 		]
 	},
 	"html2wiki": "The name of the extension's entry in Special:SpecialPages",
