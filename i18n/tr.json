@@ -6,7 +6,7 @@
 	},
 	"html2wiki": "HTML içeriğini içe aktar",
 	"html2wiki-collection-name": "Koleksiyon adı; veya ana yol:",
-	"html2wiki-comment": "[https://www.mediawiki.org/wiki/Extension:Html2Wiki/tr Html2Wiki] tarafından içe aktarılan dosya",
+	"html2wiki-comment": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki/tr Html2Wiki] tarafından içe aktarılan dosya",
 	"html2wiki-desc": "HTML içeriğini wikinize aktarın",
 	"html2wiki-dry-run": "Kuru çalışma:",
 	"html2wiki-dry-run-heading": "Yalnızca önizleme! İçerik kaydedilmedi:",

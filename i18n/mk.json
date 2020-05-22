@@ -7,7 +7,7 @@
 	},
 	"html2wiki": "Увоз на HTML-содржина",
 	"html2wiki-collection-name": "Име на збирката; или матична патека:",
-	"html2wiki-comment": "Податотеката е увезена со [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Податотеката е увезена со [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Увоз на HTML-содржина во вашето вики",
 	"html2wiki-dry-run": "На суво:",
 	"html2wiki-dry-run-heading": "Ова е само преглед! Содржината не е зачувана:",

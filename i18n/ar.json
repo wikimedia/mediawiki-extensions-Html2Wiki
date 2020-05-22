@@ -6,7 +6,7 @@
 	},
 	"html2wiki": "استيراد محتوى HTML",
 	"html2wiki-collection-name": "اسم المجموعة أو المسار الأصلي:",
-	"html2wiki-comment": "تم استيراد ملف بواسطة [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "تم استيراد ملف بواسطة [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "استيراد محتوى HTML للويكي الخاص بك",
 	"html2wiki-dry-run": "تشغيل جاف:",
 	"html2wiki-dry-run-heading": "معاينة فقط! لم يتم حفظ المحتويات:",

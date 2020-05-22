@@ -6,7 +6,7 @@
 		]
 	},
 	"html2wiki": "HTML-inhoud importeren",
-	"html2wiki-comment": "Bestand geïmporteerd door [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Bestand geïmporteerd door [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "HTML-inhoud importeren naar uw wiki",
 	"html2wiki-dry-run-heading": "Dit is een voorvertoning! De inhoud is niet opgeslagen:",
 	"html2wiki-importbtn": "Importeren",

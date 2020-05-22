@@ -10,7 +10,7 @@
 	},
 	"html2wiki": "Importer du contenu HTML",
 	"html2wiki-collection-name": "Nom de collection ou chemin du parent :",
-	"html2wiki-comment": "Fichier importé par [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Fichier importé par [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Importer un contenu HTML dans votre wiki",
 	"html2wiki-dry-run": "Prévisualiser sans enregistrer :",
 	"html2wiki-dry-run-heading": "Ceci est une prévisualisation ! Le contenu n’a pas été enregistré :",

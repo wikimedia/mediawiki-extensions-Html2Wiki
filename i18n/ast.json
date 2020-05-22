@@ -7,7 +7,7 @@
 	},
 	"html2wiki": "Importar conteníu HTML",
 	"html2wiki-collection-name": "Nome de coleción; o camín pá:",
-	"html2wiki-comment": "Ficheru importáu con [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Ficheru importáu con [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Importar conteníu HTML na wiki",
 	"html2wiki-dry-run": "De prueba:",
 	"html2wiki-dry-run-heading": "¡Solo ye una vista previa! El conteníu nun se guardó:",

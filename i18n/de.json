@@ -6,7 +6,7 @@
 	},
 	"html2wiki": "Importieren von HTML-Inhalt",
 	"html2wiki-collection-name": "Name der Sammlung oder übergeordneter Pfad:",
-	"html2wiki-comment": "Datei importiert von [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Datei importiert von [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Importiert HTML-Inhalt in dein Wiki",
 	"html2wiki-dry-run": "Trockenlauf:",
 	"html2wiki-dry-run-heading": "Dies ist nur eine Vorschau! Die Inhalte wurden nicht gespeichert:",

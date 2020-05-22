@@ -6,7 +6,7 @@
 	},
 	"html2wiki": "Importer HTML-innhold",
 	"html2wiki-collection-name": "Samlingsnavn, eller foreldresti:",
-	"html2wiki-comment": "Fil importert av [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Fil importert av [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Importer HTML-innhold til wikien din",
 	"html2wiki-dry-run": "Prøvekjøring:",
 	"html2wiki-dry-run-heading": "Kun forhåndsvisning! Innholdet ble ikke lagret:",

@@ -7,7 +7,7 @@
 	},
 	"html2wiki": "Importar conteúdo HTML",
 	"html2wiki-collection-name": "Nome do conjunto, ou nome da hierarquia:",
-	"html2wiki-comment": "Ficheiro importado por [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Ficheiro importado por [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Importa conteúdo HTML para a sua wiki",
 	"html2wiki-dry-run": "Antevisão:",
 	"html2wiki-dry-run-heading": "Mera antevisão! O conteúdo não foi gravado:",

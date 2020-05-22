@@ -6,7 +6,7 @@
 	},
 	"html2wiki": "Імпорт HTML-вмісту",
 	"html2wiki-collection-name": "Назва колекції; або батьківський каталог:",
-	"html2wiki-comment": "Файл імпортовано за допомогою [https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-comment": "Файл імпортовано за допомогою [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "Імпорт HTML-вмісту у Вашу вікі",
 	"html2wiki-dry-run": "Холостий пробіг:",
 	"html2wiki-dry-run-heading": "Лише попередній перегляд! Вміст не було збережено:",

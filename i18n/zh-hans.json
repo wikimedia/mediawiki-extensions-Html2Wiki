@@ -7,7 +7,7 @@
 	},
 	"html2wiki": "导入HTML内容",
 	"html2wiki-collection-name": "收藏名称；或父路径：",
-	"html2wiki-comment": "由[https://www.mediawiki.org/wiki/Extension:Html2Wiki Html2Wiki]导入的文件",
+	"html2wiki-comment": "由[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]导入的文件",
 	"html2wiki-desc": "导入HTML内容至您的wiki",
 	"html2wiki-dry-run": "空运行：",
 	"html2wiki-dry-run-heading": "仅为预览！内容尚未保存：",
