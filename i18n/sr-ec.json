@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"BadDog",
 			"Milicevic01"
 		]
 	},
 	"html2wiki-importbtn": "Увези",
 	"html2wiki-filename": "Назив датотеке:",
-	"logentry-html2wiki": "$1 је {{GENDER:$2|увезао|увезла}} страницу $3"
+	"logentry-html2wiki": "$1 је {{GENDER:$2|увезао|увезла}} страницу „$3”"
 }
