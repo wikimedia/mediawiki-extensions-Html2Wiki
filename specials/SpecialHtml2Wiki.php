@@ -194,6 +194,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 		// mArticleSavePath does not contain the CollectionName; equals the value any intermediate path elements NOT including the file name
 		// mArticleTitle will be the full value of mCollectionName (if any) plus mArticleSavePath plus the file name MINUS any extension
 		$this->mCollectionName = (string)$request->getText( 'collection-name' );
+		$upload = $request->getUpload( 'userfile' );
 		if ( $this->mCollectionName ) {
 			// remove a leading slash because Collection Names must not start with a slash
 			// and also 'save path' must be relative
@@ -217,9 +218,9 @@ class SpecialHtml2Wiki extends SpecialPage {
 			}
 			// later if we detect a zip, we'll build a different filename
 			// for now, assume a single HTML upload to replace an existing collection title
-			$this->mArticleTitle = $this->mFilename = $this->mCollectionName . '/' . $this->mArticleSavePath . $_FILES['userfile']['name'];
+			$this->mArticleTitle = $this->mFilename = $this->mCollectionName . '/' . $this->mArticleSavePath . $upload->getName();
 		} else {
-			$this->mArticleTitle = $this->mFilename = $_FILES['userfile']['name'];
+			$this->mArticleTitle = $this->mFilename = $upload->getName();
 		}
 		// We'll make the title without the extension
 		$this->mArticleTitle = self::removeExtensionFromPath( $this->mArticleTitle );
@@ -356,15 +357,10 @@ class SpecialHtml2Wiki extends SpecialPage {
 		$this->mFilesAreProcessed = false;
 		$out = $this->getOutput();
 		global $wgMaxUploadSize;
+		$upload = $this->getRequest()->getUpload( 'userfile' );
 		try {
-			if (
-					!isset( $_FILES['userfile']['error'] ) ||
-					is_array( $_FILES['userfile']['error'] )
-			) {
-				throw new RuntimeException( 'Multiple or missing error during upload.' );
-			}
-			// Check $_FILES['userfile']['error'] value.
-			switch ( $_FILES['userfile']['error'] ) {
+			// Check error value.
+			switch ( $upload->getError() ) {
 				case UPLOAD_ERR_OK: // Value: 0; There is no error, the file uploaded with success.
 					break;
 				case UPLOAD_ERR_INI_SIZE:
@@ -378,29 +374,29 @@ class SpecialHtml2Wiki extends SpecialPage {
 				case UPLOAD_ERR_NO_FILE: // Value: 4; No file was uploaded.
 					throw new RuntimeException( 'No file sent.' );
 				default:
-					throw new RuntimeException( 'Unhandled error: ' . $_FILES['userfile']['error'] . ' in ' . __METHOD__ );
+					throw new RuntimeException( 'Unhandled error: ' . $upload->getError() . ' in ' . __METHOD__ );
 			}
 			// Check filesize.  Right now, we're just using one value.  @todo add URL uploading
 			$max_size = is_array( $wgMaxUploadSize ) ? $wgMaxUploadSize['*'] : $wgMaxUploadSize;
-			if ( $_FILES['userfile']['size'] > $max_size ) {
+			if ( $upload->getSize() > $max_size ) {
 				throw new RuntimeException( 'Exceeded filesize limit, check $wgMaxUploadSize.' );
 			}
 
-			// we do not trust $_FILES['userfile']['type']
-			$this->mMimeType = $this->mOriginal['mimetype'] = self::getMimeType( $_FILES['userfile']['tmp_name'] );
+			// we do not trust the type
+			$this->mMimeType = $this->mOriginal['mimetype'] = self::getMimeType( $upload->getTempName() );
 			if ( $this->mMimeType === false ) {
 				throw new RuntimeException( 'Invalid file format.' );
 			}
 
 			// You should name it uniquely.
-			// DO NOT USE $_FILES['userfile']['name'] WITHOUT ANY VALIDATION !!
+			// DO NOT USE upload name WITHOUT ANY VALIDATION !!
 			// On this example, obtain safe unique name from its binary data.
 			/* We don't even need to move the file.  We WANT the upload to be discarded
 			 * and it will be after upload if we don't move it from the tmp_name
 			 * So, we can process it, and only use the result, while PHP destroys
 			 * the original source
 			 */
-			if ( !is_uploaded_file( $_FILES['userfile']['tmp_name'] ) ) {
+			if ( !is_uploaded_file( $upload->getTempName() ) ) {
 				throw new RuntimeException( 'There was a failure in the file upload' );
 			}
 		} catch ( RuntimeException $e ) {
@@ -409,8 +405,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 			);
 			return false;
 		}
-		$this->mFilename = $this->mOriginal['filename'] = $_FILES['userfile']['name'];
-		$this->mFilesize = $this->mOriginal['filesize'] = $_FILES['userfile']['size'];
+		$this->mFilename = $this->mOriginal['filename'] = $upload->getName();
+		$this->mFilesize = $this->mOriginal['filesize'] = $upload->getSize();
 
 		switch ( $this->mOriginal['mimetype'] ) {
 			case 'application/x-gzip':
@@ -457,7 +453,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 		$this->mIsRecognized = false;
 
 		$out = $this->getOutput();
-		$zipfile = $_FILES['userfile']['tmp_name'];
+		$upload = $this->getRequest()->getUpload( 'userfile' );
+		$zipfile = $upload->getTempName();
 		// this little shim will try to convert a gzip file
 		if ( ( $this->mOriginal['mimetype'] == 'application/x-gzip' ) ||
 		   ( $this->mOriginal['mimetype'] == 'application/x-gtar' ) ) {
@@ -631,7 +628,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 	private function processFile() {
 		// when only a single file is uploaded, we can populate content from tmp_name
 		if ( $this->mOriginal['mimetype'] == 'text/html' ) {
-			$this->mContent = $this->mContentRaw = file_get_contents( $_FILES['userfile']['tmp_name'] );
+			$upload = $this->getRequest()->getUpload( 'userfile' );
+			$this->mContent = $this->mContentRaw = file_get_contents( $upload->getTempName() );
 			$this->mFileCountExpected = 1;
 		}
 
