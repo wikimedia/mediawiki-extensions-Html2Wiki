@@ -388,7 +388,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 
 			// we do not trust $_FILES['userfile']['type']
 			$this->mMimeType = $this->mOriginal['mimetype'] = self::getMimeType( $_FILES['userfile']['tmp_name'] );
-			if ( false === $this->mMimeType ) {
+			if ( $this->mMimeType === false ) {
 				throw new RuntimeException( 'Invalid file format.' );
 			}
 
@@ -450,7 +450,8 @@ class SpecialHtml2Wiki extends SpecialPage {
 	private function unwrapZipFile() {
 		// wfDebug( __METHOD__ . ": unzipping stuff" );
 		// grab the original extension so we can use it for PHAR handling
-		$ext = ( false === $pos = strrpos( $this->mFilename, '.' ) ) ? '' : substr( $this->mFilename, $pos + 1 );
+		$pos = strrpos( $this->mFilename, '.' );
+		$ext = $pos === false ? '' : substr( $this->mFilename, $pos + 1 );
 		// blank out our per-file data
 		$this->mMimeType = $this->mFilename = $this->mFilesize = '';
 		$this->mIsRecognized = false;
