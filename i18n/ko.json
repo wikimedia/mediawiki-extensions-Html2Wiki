@@ -10,6 +10,7 @@
 	},
 	"html2wiki-comment": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]에서 가져온 파일",
 	"html2wiki-summary": "HTML 문서를 위키로 가져옵니다",
+	"html2wiki-importbtn": "가져오기",
 	"html2wiki-title": "HTML 가져오기",
 	"html2wiki_filenotfound": "$1 파일을 찾을 수 없습니다",
 	"html2wiki-filename": "파일 이름:",
