@@ -1006,8 +1006,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 		try {
 			$qp = htmlqp( $this->mContent, $selector );
 		} catch ( Exception $e ) {
-			// FIXME: There is no $out!
-			$out->wrapWikiMsg(
+			$this->getOutput()->wrapWikiMsg(
 				"<p class=\"error\">\n$1\n</p>", [ 'html2wiki_parse-error', $e->getMessage() . "\n " . $e->getTraceAsString() ]
 			);
 			return false;
