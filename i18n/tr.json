@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"MuratTheTurkish"
+			"MuratTheTurkish",
+			"SaldırganSincap"
 		]
 	},
 	"html2wiki": "HTML içeriğini içe aktar",
@@ -25,5 +26,5 @@
 	"html2wiki_multiple_body": "İçinde birden fazla <body> etiketi grubu bulundu\n$1",
 	"html2wiki_uploaderror": "Dosya yüklenirken bir hata oluştu:\n$1",
 	"html2wiki_parse-error": "QueryPath (http://querypath.org/) sağlanan içeriği $1 ayrıştıramadı",
-	"logentry-html2wiki": "$1 sayfası {{GENDER:$2|içe aktardı}} $3"
+	"logentry-html2wiki": "$1, $3 sayfasını {{GENDER:$2|içe aktardı}}"
 }
