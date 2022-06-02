@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"html2wiki": "Importar contento HTML",
+	"html2wiki-collection-name": "Nomine del collection; o percurso genitor:",
+	"html2wiki-comment": "File importate per [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "Importar contento HTML in tu wiki",
+	"html2wiki-dry-run": "Simulation:",
+	"html2wiki-dry-run-heading": "Solo previsualisation! Le contento non ha essite salveguardate:",
+	"html2wiki-summary": "Importar paginas HTML in le wiki",
+	"html2wiki-importbtn": "Importar",
+	"html2wiki-intro": "Usa iste formulario pro importar contento HTML in wu wiki.\n\nSi tu incarga un file ZIP, le campo \"Nomine del collection\" se usa pro differentiar inter iste collection e un version posterior. In ultra, tote le files se gruppara in un categoria a base del mesme nomine. Per exemplo, pro importar un collection de files HTML desde un systema de documentation de software, tu insererea un ID de collection unic como 'FluxCapacitor-v1.1' de maniera que tote le collection se importa in un hierarchia de articulos que comencia con 'FluxCapacitor-v1.1'. Isto permitte le importation de 10 collectiones differente sin conflictos.\n\nSi tu specifica un nomine de collection (o percurso genitor) existente, le contento existente del wiki essera actualisate.\n\nSi tu vole importar un singule file in un hierarchia existente de articulos, simplemente specifica su 'genitor' como le nomine del collection.\n\nPer exemplo, si tu importa un nove 'detalios_technic.html' que debe exister a <code>'FluxCapacitor-v1.1/docs/detalios_technic.html'</code>, le genitor es 'FluxCapacitor-v1.1/docs/'",
+	"html2wiki-title": "Importar HTML",
+	"html2wiki-fieldset-legend": "Importar contento HTML",
+	"html2wiki_filenotfound": "File ($1) non trovate",
+	"html2wiki-text": "Es supportate files HTML (.html) individual assi como files de archivo. Le archivos pote esser in formato .gz, .tar, .tar.gz, .tgz o .zip. Le imagines in le files de archivo essera tractate automaticamente.",
+	"html2wiki-filename": "Nomine del file:",
+	"html2wiki-not-allowed": "Es necessari esser administrator o haber privilegios de importation pro usar iste formulario.",
+	"html2wiki-log-name": "Registro de importation HTML",
+	"html2wiki-log-description": "Ecce un lista del plus recente importationes HTML.",
+	"html2wiki_multiple_body": "Se trova plus de un par de etiquettas <body> in $1",
+	"html2wiki_uploaderror": "Un error ha occurrite durante le incargamento del file:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) non ha potite interpretar le contento fornite a $1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|ha importate}} le pagina $3"
+}
