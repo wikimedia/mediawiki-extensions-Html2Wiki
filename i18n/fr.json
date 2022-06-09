@@ -5,7 +5,8 @@
 			"Greg Rundlett",
 			"Orlodrim",
 			"Urhixidur",
-			"Wladek92"
+			"Wladek92",
+			"Verdy p"
 		]
 	},
 	"html2wiki": "Importer du contenu HTML",
@@ -23,7 +24,7 @@
 	"html2wiki-text": "Il est possible d’importer des fichiers HTML (.html) individuels ainsi que des archives. Les archives peuvent être au format .gz, .tar, .tar.gz, .tgz ou .zip. Les images présentes dans les archives seront traitées automatiquement.",
 	"html2wiki-filename": "Nom de fichier :",
 	"html2wiki-not-allowed": "Désolé, vous devez être administrateur ou avoir le droit d’importation pour utiliser ce formulaire.",
-	"html2wiki-log-name": "Journal d’import HTML",
+	"html2wiki-log-name": "Journal des importations d’HTML",
 	"html2wiki-log-description": "Voici une liste des dernières opérations d’importation HTML",
 	"html2wiki_multiple_body": "Plus d’une balise <body> trouvée dans\n$1",
 	"html2wiki_uploaderror": "Une erreur s’est produite lors du téléversement du fichier :\n$1",
