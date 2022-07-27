@@ -3,7 +3,8 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"MuratTheTurkish",
-			"SaldırganSincap"
+			"SaldırganSincap",
+			"Cobija"
 		]
 	},
 	"html2wiki": "HTML içeriğini içe aktar",
@@ -14,7 +15,7 @@
 	"html2wiki-dry-run-heading": "Yalnızca önizleme! İçerik kaydedilmedi:",
 	"html2wiki-summary": "HTML sayfalarını vikiye aktarın",
 	"html2wiki-importbtn": "İçe aktar",
-	"html2wiki-intro": "HTML içeriğini vikinize aktarmak için bu formu kullanın.\n\nBir zip dosyası yüklerseniz, koleksiyonu daha sonraki bir sürümden ayırmak için Koleksiyon Adı alanı kullanılır. Ayrıca tüm dosyalar bir kategoride aynı ada göre gruplandırılacaktır. Örneğin, yazılım dokümantasyon sisteminizden çıkan bir HTML dosyaları koleksiyonunu içe aktardığınızı varsayalım, 'FluxCapacitor-v1.1' gibi benzersiz bir Koleksiyon Kimliği girersiniz, böylece tüm koleksiyon 'FluxCapacitor-v1.1' ile başlayan bir madde hiyerarşisine aktarılır. Bu şekilde 10 farklı koleksiyon birbirini tıka basmadan ithal edilebilir.\n\nMevcut bir Koleksiyon Adı (veya üst yol) belirtildiğinde mevcut viki içeriği güncellenir.\n\nTek bir dosyayı mevcut bir madde hiyerarşisine içe aktarmak istiyorsanız, koleksiyon adı olarak 'üst' öğesini belirtmeniz yeterlidir.\n\nÖrneğin, <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code> adresinde bulunması gereken yeni bir 'advanced_topics.html' içe aktarılıyorsa, üst öğe 'FluxCapacitor-v1.1/docs/' olurdu",
+	"html2wiki-intro": "HTML içeriğini vikinize aktarmak için bu formu kullanın.\n\nBir zip dosyası yüklerseniz, koleksiyonu daha sonraki bir sürümden ayırmak için Koleksiyon Adı alanı kullanılır. Ayrıca tüm dosyalar bir kategoride aynı ada göre gruplandırılacaktır. Örneğin, yazılım belgeleme sisteminizden çıkan bir HTML dosyaları koleksiyonunu içe aktardığınızı varsayalım, 'FluxCapacitor-v1.1' gibi benzersiz bir Koleksiyon Kimliği girersiniz, böylece tüm koleksiyon 'FluxCapacitor-v1.1' ile başlayan bir madde hiyerarşisine aktarılır. Bu şekilde 10 farklı koleksiyon birbirini tıka basmadan ithal edilebilir.\n\nMevcut bir Koleksiyon Adı (veya üst yol) belirtildiğinde mevcut viki içeriği güncellenir.\n\nTek bir dosyayı mevcut bir madde hiyerarşisine içe aktarmak istiyorsanız, koleksiyon adı olarak 'üst' öğesini belirtmeniz yeterlidir.\n\nÖrneğin, <code>'FluxCapacitor-v1.1/docs/advanced_topics.html'</code> adresinde bulunması gereken yeni bir 'advanced_topics.html' içe aktarılıyorsa, üst öğe 'FluxCapacitor-v1.1/docs/' olurdu",
 	"html2wiki-title": "HTML'yi içe aktar",
 	"html2wiki-fieldset-legend": "HTML içeriğini içe aktar",
 	"html2wiki_filenotfound": "Dosya ($1) bulunamadı",
