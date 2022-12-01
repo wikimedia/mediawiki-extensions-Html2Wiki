@@ -1053,7 +1053,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 				$anchor = array_slice( $arrPath, 0, count( $arrPath ) - $levels );
 				$anchor = implode( '/', $anchor );
 				$ { $attribute } = str_replace( '../', '', $ { $attribute } );
-				$ { $attribute } = "$anchor/${$attribute}";
+				$ { $attribute } = "$anchor/{${$attribute}}";
 			}
 			// only remove the extension on href's because we've similarly modified titles
 			if ( $attribute == 'href' && !$isAbsolute ) {
