@@ -6,5 +6,6 @@
 	},
 	"html2wiki-dry-run-heading": "To je samo predogled! Vsebina še ni shranjena:",
 	"html2wiki-importbtn": "Uvozi",
+	"html2wiki_filenotfound": "Datoteka ($1) ni bila najdena",
 	"html2wiki-filename": "Ime datoteke:"
 }
