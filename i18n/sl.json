@@ -4,8 +4,25 @@
 			"Eleassar"
 		]
 	},
+	"html2wiki": "Uvoz vsebine HTML",
+	"html2wiki-collection-name": "Ime zbirke; ali nadrejena pot:",
+	"html2wiki-comment": "Datoteko je uvozil [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "Uvozite vsebino HTML v vaš viki",
+	"html2wiki-dry-run": "Predogled:",
 	"html2wiki-dry-run-heading": "To je samo predogled! Vsebina še ni shranjena:",
+	"html2wiki-summary": "Uvoz strani HTML v viki",
 	"html2wiki-importbtn": "Uvozi",
+	"html2wiki-intro": "Uporabite ta obrazec za uvoz vsebine HTML v svoj viki.\n\nČe nalagate datoteko .zip, se polje »Ime zbirke« uporablja za razlikovanje zbirke od novejše različice. Prav tako bodo vse datoteke združene v kategorijo z istim imenom. Če na primer uvažate zbirko datotek HTML, ki izhajajo iz dokumentacijskega sistema programske opreme, bi morali vnesti enoličen ID zbirke, kot je »FluxCapacitor-v1.1«, tako da se celotna zbirka uvozi v hierarhijo člankov, ki se začne s »FluxCapacitor-v1.1«. Na ta način je mogoče uvoziti 10 različnih zbirk, ne da bi se medsebojno motile.\n\nČe boste navedli obstoječe ime zbirke (ali nadrejeno pot), boste posodobili obstoječo vsebino vikija.\n\nČe želite uvoziti posamezno datoteko v obstoječo hierarhijo člankov, kot ime zbirke preprosto navedite »parent«.\n\nČe na primer uvažate nov »advanced_topics.html«, ki bi moral obstajati na <code>»FluxCapacitor-v1.1/docs/advanced_topics.html«</code>, bi bil nadrejeni »FluxCapacitor-v1.1/docs/«.",
+	"html2wiki-title": "Uvoz HTML",
+	"html2wiki-fieldset-legend": "Uvoz vsebine HTML",
 	"html2wiki_filenotfound": "Datoteka ($1) ni bila najdena",
-	"html2wiki-filename": "Ime datoteke:"
+	"html2wiki-text": "Podprte so posamezne datoteke HTML (.html) in arhivske datoteke. Arhivi so lahko .gz, .tar, .tar.gz, .tgz ali .zip. Slike bodo samodejno obdelane iz arhivskih datotek.",
+	"html2wiki-filename": "Ime datoteke:",
+	"html2wiki-not-allowed": "Oprostite, za uporabo tega obrazca morate biti administrator ali imeti uvozne pravice.",
+	"html2wiki-log-name": "Dnevnik uvoza HTML",
+	"html2wiki-log-description": "Tu je prikazan seznam najnovejših uvozov HTML",
+	"html2wiki_multiple_body": "Najden več kot en par<body> oznak v \n$1",
+	"html2wiki_uploaderror": "Pri nalaganju datoteke je prišlo do napake:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) ni mogel razčleniti posredovane vsebine na $1",
+	"logentry-html2wiki": "$1 je {{GENDER:$2|uvozil|uvozila|uvozil_a}} stran $3"
 }
