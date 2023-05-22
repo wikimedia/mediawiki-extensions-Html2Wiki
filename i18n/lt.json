@@ -6,10 +6,22 @@
 			"Zygimantus"
 		]
 	},
+	"html2wiki": "Importuoti HTML turinį",
+	"html2wiki-comment": "Failas importuotas naudojant [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "Importuokite HTML turinį į savo vikį",
 	"html2wiki-dry-run": "Sausas paleidimas:",
+	"html2wiki-dry-run-heading": "Tik peržiūra! Turinys nebuvo išsaugotas:",
 	"html2wiki-summary": "Importuoti HTML puslapius į viki",
 	"html2wiki-importbtn": "Importuoti",
 	"html2wiki-title": "Importuoti HTML",
+	"html2wiki-fieldset-legend": "Importuoti HTML turinį",
+	"html2wiki_filenotfound": "Failas ($1) nerastas",
+	"html2wiki-text": "Palaikomi atskiri HTML (.html) ir archyvo failai. Archyvai gali būti .gz, .tar, .tar.gz, .tgz arba .zip. Paveikslėliai bus tvarkomi automatiškai iš archyvinių failų.",
 	"html2wiki-filename": "Failo pavadinimas:",
-	"html2wiki-log-name": "HTML importo žurnalas"
+	"html2wiki-not-allowed": "Atsiprašome, norėdami naudoti šią formą turite būti administratorius arba turėti importo teises.",
+	"html2wiki-log-name": "HTML importo žurnalas",
+	"html2wiki-log-description": "Žemiau pateikiamas naujausių HTML importų sąrašas",
+	"html2wiki_multiple_body": "Rasta daugiau nei vienas rinkinys <body> žymų\n$1",
+	"html2wiki_uploaderror": "Įkeliant failą įvyko klaida:\n$1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|importavo}} puslapį $3"
 }
