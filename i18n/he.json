@@ -4,7 +4,25 @@
 			"Amire80"
 		]
 	},
+	"html2wiki": "יבוא תוכן HTML",
+	"html2wiki-collection-name": "שם האוסף; או נתיב הורה:",
+	"html2wiki-comment": "הקובץ יובא על־ידי [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
+	"html2wiki-desc": "יבוא תוכן HTML לתוך הוויקי שלך",
 	"html2wiki-dry-run": "הרצה יבשה:",
+	"html2wiki-dry-run-heading": "תצוגה מקדימה בלבד! התוכן לא נשמר:",
+	"html2wiki-summary": "יבוא דפי HTML לוויקי",
 	"html2wiki-importbtn": "יבוא",
-	"html2wiki-filename": "שם הקובץ:"
+	"html2wiki-intro": "השתמש בטופס זה כדי לייבא תוכן HTML לתוך הוויקי שלך.\n\nאם אתה מעלה קובץ zip, השדה 'שם אוסף' משמש כדי להבדיל בין האוסף לגרסה מאוחרת יותר. כמו כן, כל הקבצים יקובצו בקטגוריה באותו שם. למשל, בעת יבוא אוסף של קובצי HTML שנפלטים ממערכת תיעוד התוכנה שלך, יש להזין מזהה אוסף ייחודי כמו \"FluxCapacitor-v1.1\" כך שהאוסף כולו מיובא להיררכיית מאמרים שמתחילה ב־\"FluxCapacitor-v1.1\". בדרך הזאת ניתן לייבא 10 אוספים שונים מבלי לקלקל אחד את השני.\n\nציון שם אוסף קיים (או נתיב הורה) יעדכן את תוכן הוויקי הקיים.\n\nאם ברצונך לייבא קובץ בודד לתוך היררכיית מאמרים קיימת, צריך פשוט ציין את ה\"הורה\" בתור שם האוסף.\n\nלמשל, אם מייבאים \"advanced_topics.html\" חדש שאמור להיות מוחזק ב־ <code>\"FluxCapacitor-v1.1/docs/advanced_topics.html\"</code>, ההורה יהיה \"FluxCapacitor-v1.1/docs/\"",
+	"html2wiki-title": "יבוא HTML",
+	"html2wiki-fieldset-legend": "יבוא תוכן HTML",
+	"html2wiki_filenotfound": "הקובץ ($1) לא נמצא",
+	"html2wiki-text": "קובצי HTML פרטניים (‎.html) וכן קובצי Archive נתמכים. הארכיונים עשויים להיות <span dir=\"ltr\">.gz</span>, <span dir=\"ltr\">.tar</span>, <span dir=\"ltr\">.tar.gz</span>, <span dir=\"ltr\">.tgz</span> או <span dir=\"ltr\">.zip</span>. תמונות יטופלו אוטומטית מקובצי ארכיון.",
+	"html2wiki-filename": "שם הקובץ:",
+	"html2wiki-not-allowed": "מצטערים, עליך להיות מפעיל או להיות בעל הרשאות יבוא כדי להשתמש בטופס הזה.",
+	"html2wiki-log-name": "יומן יבוא HTML",
+	"html2wiki-log-description": "להלן רשימה של פעולות יבוא ה־HTML האחרונות",
+	"html2wiki_multiple_body": "נמצא יותר מערכה אחת של תגי <body> ב־$1",
+	"html2wiki_uploaderror": "אירעה שגיאה בטיפול בהעלאת הקובץ:\n$1",
+	"html2wiki_parse-error": "QueryPath (ר' http://querypath.org) לא הצליח לפענח את התוכן שסופק ב־$1",
+	"logentry-html2wiki": "$1 {{GENDER:$2|ייבא|ייבאה}} את הדף $3"
 }
