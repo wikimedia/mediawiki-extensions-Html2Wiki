@@ -2,19 +2,29 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"McDutchie"
 		]
 	},
 	"html2wiki": "HTML-inhoud importeren",
+	"html2wiki-collection-name": "Collectienaam; of bovenliggend pad:",
 	"html2wiki-comment": "Bestand geïmporteerd door [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Html2Wiki Html2Wiki]",
 	"html2wiki-desc": "HTML-inhoud importeren naar uw wiki",
+	"html2wiki-dry-run": "Oefening:",
 	"html2wiki-dry-run-heading": "Dit is een voorvertoning! De inhoud is niet opgeslagen:",
+	"html2wiki-summary": "HTML-pagina’s in de wiki importeren",
 	"html2wiki-importbtn": "Importeren",
+	"html2wiki-intro": "Met dit formulier kunt u HTML-inhoud in uw wiki importeren.\n\nAls u een zip-bestand uploadt, wordt het veld Collectienaam gebruikt om de verzameling te onderscheiden van een latere versie. Ook worden alle bestanden gegroepeerd in een categorie met dezelfde naam. Stel dat u bijvoorbeeld een verzameling HTML-bestanden importeert die zijn gegenereerd door uw softwaredocumentatiesysteem. U voert dan een unieke collectie-ID in, zoals ‘FluxCapacitor-v1.1’, zodat de hele collectie wordt geïmporteerd in een artikelhiërarchie, beginnend met ‘FluxCapacitor-v1.1’. Op deze manier kunnen 10 verschillende collecties worden geïmporteerd zonder elkaar in de weg te zitten.\n\nAls u een bestaande collectienaam (of bovenliggend pad) opgeeft, wordt de bestaande wiki-inhoud bijgewerkt.\n\nAls u één enkel bestand in een bestaande artikelhiërarchie wilt importeren, geeft u het ‘bovenliggende pad’ ervan op als de collectienaam.\n\nAls u bijvoorbeeld een nieuw bestand ‘advanced_topics.html’ importeert dat beschikbaar moet komen op <code>FluxCapacitor-v1.1/docs/advanced_topics.html</code>, is het bovenliggende pad ‘FluxCapacitor-v1.1/docs/’.",
 	"html2wiki-title": "HTML importeren",
 	"html2wiki-fieldset-legend": "HTML-inhoud importeren",
 	"html2wiki_filenotfound": "Bestand ($1) niet gevonden",
+	"html2wiki-text": "Individuele HTML- (.html) en archiefbestanden worden ondersteund. Archieven kunnen .gz, .tar, .tar.gz, .tgz of .zip zijn. Afbeeldingen worden automatisch verwerkt vanuit archiefbestanden.",
 	"html2wiki-filename": "Bestandsnaam:",
 	"html2wiki-not-allowed": "Sorry, u moet een moderator zijn of beschikken over importeer-rechten om dit formulier te gebruiken.",
+	"html2wiki-log-name": "HTML-importlogboek",
+	"html2wiki-log-description": "Hieronder staat een lijst met de meest recente HTML-importeringen.",
+	"html2wiki_multiple_body": "Meer dan één paar <body>-tags gevonden in $1",
 	"html2wiki_uploaderror": "Er is een fout opgetreden bij het verwerken van de bestandsupload:\n$1",
+	"html2wiki_parse-error": "QueryPath (http://querypath.org/) kon de geleverde inhoud op $1 niet verwerken",
 	"logentry-html2wiki": "$1 heeft de pagina $3 {{GENDER:$2|geïmporteerd}}"
 }
