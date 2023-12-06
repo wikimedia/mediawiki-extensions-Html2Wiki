@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eleassar"
+			"Eleassar",
+			"Upwinxp"
 		]
 	},
 	"html2wiki": "Uvoz vsebine HTML",
@@ -24,5 +25,5 @@
 	"html2wiki_multiple_body": "Najden več kot en par<body> oznak v \n$1",
 	"html2wiki_uploaderror": "Pri nalaganju datoteke je prišlo do napake:\n$1",
 	"html2wiki_parse-error": "QueryPath (http://querypath.org/) ni mogel razčleniti posredovane vsebine na $1",
-	"logentry-html2wiki": "$1 je {{GENDER:$2|uvozil|uvozila|uvozil_a}} stran $3"
+	"logentry-html2wiki": "$1 je {{GENDER:$2|uvozil|uvozila|uvozil/a}} stran $3"
 }
