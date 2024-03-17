@@ -556,7 +556,7 @@ class SpecialHtml2Wiki extends SpecialPage {
 				// check if mFileCountExpected = mFileCountProcessed and close the handle
 				zip_close( $zipHandle );
 			}
-		unlink( $zipfile );
+			unlink( $zipfile );
 		} else {
 			$out->addHTML( '<div><pre>' );
 			$out->addHTML( 'This zip archive does not contain any HTML or image files to process' );
